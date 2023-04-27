@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+    function addFruit() {
+        var fruit = document.getElementById("fruit");
+        if(fruit.value !="") {
+            var opt = document.createElement("option");
+            opt.appendChild(document.createTextNode(fruit.value));
+            document.getElementById("basket").appendChild(opt);
+            fruit.value="";
+        } else
+            alert("Provide fruit to add");
+            fruit.focus();
+    }
+
+    function removeFruit(){
+        var found = false;
+        var fruit = document.getElementById("fruit");
+        var basket = document.getElementById("basket");
+        if(fruit.value !=""){
+            for (var i=0; i<basket.length; i++)
+            if(basket.options[i].value == fruit.value){
+                basket.remove(i);
+                found = true;
+                break;
+            }
+        if(!found)
+            alert("Fruit not found in the basket");
+        fruit.value = "";
+        }
+        else
+        alert("Provide fruit to remove");
+        fruit.focus();
+    }
+    </script>
+</head>
+<body>
+    Fruit Name: <input id="fruit"> 
+    <input type="button" value="Add to basket" onclick="addFruit()">
+    <input type="button" value="Remove from basket" onclick="removeFruit()"><hr>
+    <select id="basket">
+        <option>Apple</option>
+        <option>Banana</option>
+    </select>
+</body>
+</html>

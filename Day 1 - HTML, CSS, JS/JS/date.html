@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date</title>
+    <script language="JavaScript">
+        // var dt = new Date();
+        // document.write(dt.getDay() + "<br>");
+        // document.write(dt.getHours() + "<br>")
+
+        function timer() {
+            var dt = new Date();
+            var time = dt.getHours() +":" + dt.getMinutes() + ":" + dt.getSeconds();
+            document.getElementById("digi").innerText = time;
+
+            // setTimeout("timer()", 1000); // recursive calls
+        }
+        setInterval("timer()", 1000);
+    </script>
+</head>
+<body onload="timer()">
+    <div id="digi" style="font:48pt courier"></div>
+</body>
+</html>

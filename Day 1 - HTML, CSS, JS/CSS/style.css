@@ -1,0 +1,21 @@
+*{
+    background-color: aqua;
+}
+h1 {color:azure;background: cadetblue;
+    font-family: cursive}
+li {display: inline;padding: 10px;}
+p.c1 { font: 16pt georgia; color: red}
+p.c2 { font: 16pt arial; color: yellow}
+a {border:2pt outset;text-decoration:none;}
+a:hover {background-color: aqua;}
+img {border:10pt ridge;border-color: coral;}
+
+li:nth-child(odd){
+    background-color: gold;
+    color: green;
+}
+
+li:nth-child(even){
+    background-color: green;
+    color: gold;
+}
