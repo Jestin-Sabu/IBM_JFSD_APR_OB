@@ -1,0 +1,227 @@
+OOPS: Object Oriented Programming System
+- It provides discipline of programming
+- It promotes reusability of code
+- It is modular style of programming
+	- Improves readability of code
+- It is secured style of programming
+
+Object
+- It is an entity, that represents something or someone in a problem domain (Application).
+- Every object has 4 things
+	- Behaviour / Functions / Methods
+	- Attributes / Characteristics / Variables
+		- State: Values in the attribute at a given point of time
+		* State has direct impact on the behaviour of the object
+	- Unique identity
+
+Class
+- It is a mere description of one or group of objects
+- An object is the implementation of its class
+- All the objects shares common characteristics and behaviours 
+	- Their identity and state may differ.
+
+Abstraction
+- It deals with externally visible behaviour of an object
+- Used to identify an object in runtime 
+
+Interface
+- When 2 unrelated entities wants to communicate with each other
+
+Encapsulation
+- Data security
+- There's a layer of operations behind which the data is hidden
+- Data is available but not interactive
+
+Polymorphism
+- One thing having many forms in multiple different contexts
+
+Relationships
+- IS A: Inheritance, Generalisation and Speciailisation
+- HAS A: Association, Containership
+
+Inheritance:
+- Reusability of code
+- Create a new class by acquiring feature of existing class, with/without new features
+- Parent/Child relationship
+- A child class acquires a copy of its parent.
+
+Types: 
+- Single	: Having one parent
+- Multiple	: Having multiple parent
+Note: Java doesn't support multiple inheritance in any way.
+
+Containership:
+- Cardinality based relationship
+	1 .. 1
+	1 .. *
+	* .. *
+
+* A ShoppingCart has multiple Products
+* A Citizen has a Passport
+* A Customer has multiple CreditCards
+-----------------------------------------------------------------------------------
+Platform Independency
+
+JDK : Java Development Kit
+- API : Application Programming Interface (Java Library)
+- Compiler
+
+Hello.java (Java Code)
+	|
+Compiler
+	|
+Hello.class (Bytecode)
+
+JRE	 : Java Runtime Environment
+- API
+- JVM
+	- Class loaded
+	- Verifier
+	- JIT (Just in Time - Interpreter) : At this point the byte code is interpreted into Native code
+	- GC (Garbage Collector)
+	- DEH (Default Exception Handler)
+	- DM (Driver Manager)
+-----------------------------------------------------------------------------------
+
+Naming Conventions
+- ClassNamingConvention
+- methodNamingConvention
+- fieldNamingConvention
+- CONSTANT_NAMING_CONVENTION
+- package.naming.convention
+
+Data Types
+byte				1
+short				2
+int					4
+long				8
+float				4
+double			8
+char				2
+boolean			1
+
+Constant: 8
+- Java will treat it as "int" by default
+Constant: 0.12
+- Java will treat it as "double" by default
+
+Char support Unicode i.e. 65536 chars, unlike ASCII that was only 256
+
+String:
+- Its a class in Java 
+- It is part of java.lang package
+- java.lang is the default package of Java
+	- No explicit import required
+- A String class object represents immutable string
+- String class can be instantiated in two ways
+	- Primitive/Variable style
+		- String s1 = "Hello";
+		- In this case string object is created inside String-Pool memory area
+		- String-Pool is optimised memory area, 
+			- where if 2 strings are holding same value they are made to use common memory
+	- Object/Instance style
+		- String s1 = new String("Hello");
+		- In this case String object is created inside Heap memory area
+
+As String object represents immutable string
+- In a string centric application where manipulations of strings are common
+- Is it advisable to use String class? Answer is NO.
+- Hence there are couple of classes provided by Java as an alternate to String class
+- They are StringBuilder and StringBuffer
+
+Wrapper Classes
+- There's a class for each data type in Java
+- To represent primitive value as an object in certain Java API's where primitives are not allowed.
+- They provide basic utility features, such as extracting specific type value out of string value
+	- Integer.parseInt()
+	- Float.parseFloat()
+	- Double.parseDouble()
+
+- Java supports Auto-Boxing feature to take care of that.
+int x = 10;
+Integer xo = x;
+Integer xc = 50;
+
+int sum = xo + xc;
+
+-----------------------------------------------------------------------------------
+
+Object Creation
+Person p1;			// Declaration
+p1 = new Person();		// Instantiation
+// Merging them
+Person p1 = new Person();		// Definition
+ 
+Constructor
+- Its a special member method of a class
+- It is mainly used for instantiation
+- But, being a method which is called at the time of instantiation
+	- It can be utilised to set the initial state of an object
+- It has the same name as that of the class name
+- If no constructor is defined, runtime provides a default constructor
+	- That is with no parameters
+
+this keyword
+- It represents current object
+	- The object in context
+- this()
+	- To call another constructor on the same object
+		- Constructor chaining
+
+-----------------------------------------------------------------------------------
+
+Employee
+- empNo
+- empName
+- salary
+- Constructors
+- payslip()
+- getSalary()
+
+Manager
+- incentives
+
+Clerk
+- commission
+
+
+Accounts
+- acntNo
+- holder
+- balance
+- Constructors
+- summary()
+- deposit(double amount)
+- withdraw(double amount)
+
+Static members:
+- They are considered as class members
+- Only one copy created for the whole class, shared by all objects of that class
+- Can be accessed directly with the class reference
+
+* Abstract classes cannot be instantiated.
+
+class Alfa {
+	public Alfa() {	Sysout("Alfa Constructor");   }
+	public void demo() {	Sysout("Alfa Demo");   }
+}
+
+class Beta extends Alfa {
+	public Beta() {	Sysout("Beta Constructor");   }
+	public void test() {	Sysout("Beta Test");   }
+	public void demo() {	Sysout("Beta Demo");   }
+}
+
+Alfa a = new Alfa();		// Alfa Constructor
+a.demo();					// Alfa Demo
+Beta bt = (Beta) a;		// Error - This object doesn't have Beta instance around it.
+
+Beta b = new Beta();	// Alfa Constructor -> Beta Constructor
+b.test();					// Beta Test
+b.demo();					// Alfa Demo	-- Beta Demo
+
+Alfa ab = b;				// Up-Casting (Implicit)
+ab.demo();				// Alfa Demo -- Beta Demo
+ab.test();					// Error - Parent class reference cannot access owned members of child
+
+Beta ba = (Beta) ab;	// Down-Casting (Explicit)
