@@ -1,0 +1,142 @@
+Accounts
+- acntNo
+- holder
+- balance
+
+Savings
+- Opening balance = 1000
+- Min balance = 1000
+
+Current
+- Opening balance = 5000
+- Min balance = 0
+- Overdraft limit = 10000
+
+				Balance		Overdraft
+				5000			10000
+-3000			2000			10000
+-5000			0				7000
++2000		0				9000
++4000		3000			10000
+
+-----------------------------------------------
+Final keyword
+- Final represent constants
+- variable: That cannot be manipulated
+- method: That cannot be overridden
+- class: That cannot be inherited/extended
+
+Abstract class
+- A class that cannot be instantiated
+- But, it can be extended/inherited
+
+Abstract method
+- A method without implementation
+- A class holds this method has to be declared abstract
+- Being an undefined method, kept the class incomplete
+	- Such classes cannot be instantiated unless the method is completely defined.
+- Purpose is to achieve polymorphism
+
+Interface:
+- Its an 100% Abstract container in Java
+- All the methods are by default public abstract
+- All the fields are by default public static final
+- A class can implement multiple interfaces
+- An interface can extend multiple interfaces
+
+interface Holder {
+	void viewQuote();
+}
+interface Broker extends Holder {
+	void getQuote();
+}
+interface Exchange extends Broker {
+	void setQuote();
+}
+
+class Stock implements Exchange {
+	public void getQuote() {
+		Sysout("Get quote");
+	}
+	public void setQuote() {
+		Sysout("Set quote");
+	}
+	public void viewQuote() {
+		Sysout("View quote");
+	}
+}
+
+Stock tata = new Stock();
+
+Holder h = tata;
+h.viewQuote();
+
+Broker b = tata;
+b.viewQuote();
+b.getQuote();
+
+Exchange x = tata;
+x.viewQuote();
+x.getQuote();
+x.setQuote();
+-----------------------------------------------------------------
+
+class CurrencyConverter {
+	public void double convert(source_currency, target_currency, amount) {
+		// Logic to convert currency in max 2 lines
+	}
+}
+
+USD -> INR
+INR -> USD
+UKP
+UKP -> INR
+INR -> UKP
+UKP -> USD
+USD -> UKP
+
+Base Currency: Dollar
+
+Book						Member
+- title						- name
+- member					- book
+- status()					- status()
+- issueBook(Member m)
+- returnBook(Member m)
+-----------------------------------------------------------------
+
+Design Patterns
+- Solution to recurring problem.
+	- Solving problem without disturbing existing implementation.
+- A pattern to produce objects on demand
+	- Factory Method
+- A pattern to product an object and return reference of the same every time
+	- Singleton
+-----------------------------------------------------------------
+Assignment:
+- Create a Product class
+	Product
+	- name
+	- price
+	- Constructors
+	- Getters and Setters
+- Create a ShoppingCart class
+	ShoppingCart
+	- product[5]		// array of Product
+	- total
+	- addToCart(Product p)
+	- checkout() 
+
+* Maximum 5 products can be added to cart
+* addToCart method should print error for adding more than 5 products
+* Price of the products should be added to cart total
+* Checkout should print all product details and cart total
+
+2)
+In the Accounts application we have to print statement of last 10 transactions
+Which includes
+	- transaction type
+	- transaction amount
+	- balance
+
+Introduce a new method in Accounts class named "statement()" to print the same
