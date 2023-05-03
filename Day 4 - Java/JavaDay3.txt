@@ -1,0 +1,154 @@
+A Java program can have multiple classes and interfaces.
+But there can be only 1 public class or interface
+Public type must be defined in its own file
+Java program name and public class name must be same.
+
+Outer class can only be
+- public
+- default
+- final
+- abstract
+
+Inner class can be
+- public/private/protected/default
+- final/static/abstract
+
+Anonymous inner classes can be defined as an implementation on the fly
+They don't have names hence their constructors are nameless
+-----------------------------------------------------------
+
+"Every object is an Object in Java."
+
+- Object is the root class of the Java API
+- Every Java class directly or indirectly is a child of Object class
+- Important methods of Object class
+	- toString()
+		- Every Java object must have a string representation
+	- equals()
+		- Every Java object must be comparable
+	- clone()
+		- Java objects can be cloned
+		- By default it implements Shallow Copying algorithm
+	- getClass()
+		- To get class information of a Java object
+		- Handy in the reflection API
+	- hashCode()
+		- Every Java object has a unique number in JVM
+	- wait(), notify(), notifyAll()
+		- Method used in multi-threaded scenerios
+-----------------------------------------------------------
+Marker Interface:
+- Interfaces without any field or methods
+- They are blank interfaces
+	- Introduce to force conditional agreements
+- Example
+	- Cloneable
+	- Serializable
+	- Remote
+-----------------------------------------------------------
+
+Packages:
+- Java term for folders
+- Way to organise multiple java class files in to folders
+- Mainly introduced to avoid naming conflicts among class names
+- Solves the problem of ambiguity
+
+Naming convention of packages
+- Packages follows reverse order of URL as naming convention
+
+mail.google.com
+map.google.com
+ads.google.com
+
+// In case of the order of URL
+mail
+	- google
+		- com
+map
+	- google
+		- com
+
+// In case of the reverse order of URL
+com
+	- google
+		- mail
+			- *.class
+		- map
+			- *.class
+		- ads
+			- *.class
+
+com.ibm.bank
+com.ibm.emp
+com.ibm.stock
+com.ibm.xe
+com.ibm.lib
+
+
+Scope / Access Modifiers
+									 (package)
+MyClass				private       default       protected       public
+Same Package
+- Child class			   NO           YES            YES                 YES
+- Other class			   NO           YES            YES                 YES
+Other Package
+- Child class			   NO           NO           YES                  YES
+- Other class			   NO           NO           NO                 YES
+
+-----------------------------------------------------------
+jar files
+Java Archives
+- It encapsulates and zips whole Java application .class files to serve as library.
+war files
+Web Archive
+- Web application
+ear files
+Enterprise Archives
+- Enterprise applications
+
+-----------------------------------------------------------
+// Single line comment
+
+/*
+	Block comment
+*/
+
+/**
+	JavaDoc comment
+*/
+
+-----------------------------------------------------------
+Reflection API
+- One of the most powerful APIs in Java
+- It can load class manually into JVM
+- It can provide detailed summary of the object
+	- Like list of constructors, methods and fields
+- It can even dynamically instantiate objects and invoke methods
+- It is very handy API for automation of tasks
+- Eclipse uses this API for auto-completion support
+
+-----------------------------------------------------------
+SAM: Single Abstract Method
+- We used to call interfaces with Single abstract method as SAM interface.
+- Functional Interface introduced in Java 8
+	- An interface with Single Abstract Method
+	- Need not write the whole class to implement SAM
+	- Hence, Lambda expression is introduced in Java 8
+	- To mark them @FunctionInterface annotation is introduced
+
+- From Java Spider interfaces can now have fully defined methods
+	- "default" is the keyword to defined methods inside an interface
+	- These methods can be called with the reference of objects of
+ 	implementing class
+	- It can also have fully defined static methods
+	- Can be called directly with interface reference
+
+Varargs:
+- Introduced to reduce the pain of passing an array to method arguments
+- It can only be the last argument of a method
+- It is represented with "..." 3 dots
+
+Generics:
+- Introduced to keep classes generic but objects of a specific type
+- If no type specified then by default it consider it of Object type
+
