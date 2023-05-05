@@ -1,0 +1,53 @@
+i18n: Internationalisation / Localisation
+- Uses Locale to identity language
+- ResourceBundle class is used to load respective properties file based on locale
+- Some locales are predefined, custom locales can be created.
+
+-------------------------------------------------------------
+Streams API
+- It allows to process data in a declarative way
+- Enhances the usability of Java collections
+	- Making it easy to iterate and perform tasks against elements in collections
+- Supports sequential and parallel operations
+- Not a data structure
+- Designed for Lambdas
+- Categories of Stream operations
+	- Intermediate operations
+	- Terminal operations
+- A stream pipeline consist of zero or more intermediate operations and a terminal 
+- Stream is closed once terminal operation is performed
+- Different type of stream operations are
+	- Filter
+	- Map
+	- Reduce
+	- Search
+	- Sort
+
+-------------------------------------------------------------
+JDBC: Java Database Connectivity
+- It is Java API to communicate with databases
+- It uses different types of drivers to communicate with database
+- JRE provides DriverManager service to handle drivers
+
+Steps for JDBC
+1- Identify appropriate database and driver
+	- We choose MySQL and Type IV driver
+2- Register driver with the Driver Manager
+3- Request Connection from Driver Manager
+4- Create Statement
+5- Execute and get result
+
+Types of Statements
+1- Statement(I)
+	- Used to perform fixed or hard-coded SQL queries
+	- Compiled every time before execution
+2- PreparedStatement(I)
+	- Used to perform SQL queries with dynamic values
+	- Represents Precompiled SQL queries
+3- CallableStatement(I)
+	- Used to invoke database stored procedures and functions
+
+Select SQL queries returned results are represented as ResultSet(I) objects
+- Result set is a record pointer, points before the first record fetched from database
+- It stores Select query result in a logical table in memory for traversing
+

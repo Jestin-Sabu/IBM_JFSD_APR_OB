@@ -1,0 +1,5 @@
+name=Polo
+age=21
+city=pune
+gender=male
+address=221B Baker Street
