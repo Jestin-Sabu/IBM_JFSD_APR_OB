@@ -1,0 +1,241 @@
+Types of Functional Interfaces:
+- Consumer
+	- Consumes a value
+	- Doesn't return anything
+- Supplier
+	- Supply a value
+	- Doesn't take anything
+- Predicate & BiPredicate
+	- Returns boolean 
+	- Takes an argument
+	- BiPredicate takes 2 arguments
+- Function & BiFunction
+	- Returns a value
+	- Takes an argument
+	- BiFunction takes 2 arguments
+
+---------------------------------------------------------
+Exception Handling
+- Exceptions are broken rules.
+- Every system is govern by set of rules.
+- Exception handling gives control in the hands of developer to handle the problem
+	or react to illegal activity.
+
+Object
+ - Throwable
+	- Error
+	- Exception
+		- SQLException
+		- IOException
+		- InterruptedException
+		- ...
+		- RuntimeException
+			- NullPointerException
+			- ArithmeticException
+			- ArrayIndexOutOfBoundsException
+			- ...
+
+There are 2 types of exceptions
+- Checked
+	- Handling is mandatory otherwise it gives compile time error
+	- Exception and all its direct child classes falls under this category
+- Unchecked
+	- Handling is optional, if exception occurs and not handled will lead to exit
+	- RuntimeException and all its child classes falls under this category
+
+try, catch, finally, throw, throws
+
+try {
+	[statements that may
+	throw exception(s)]
+} catch(ExceptionType ref) {
+	[Handling code]
+} catch(ExceptionType ref) {
+	[Handling code]
+} finally {	// Executes no matter what
+	[Clean-up operation]
+} 
+
+int sum (int a, int b) {
+	return a + b;
+}
+
+void withdraw(double amount) throws BalanceException {
+	// on some condition check
+	throw new BalanceException();
+}
+ 
+Important methods of Exception class
+- printStackTrace()
+	- Handy for developers to trouble shoot problem
+- toString()
+	- For logging to audit application behaviour
+- getMessage()
+	- For end users
+
+---------------------------------------------------------
+Multi-Threading...
+- Threads are used to perform parallel operations
+- Java program are by default multi-threaded
+	- Java application runs inside a thread called "main"
+- We can create our own threads apart from main thread
+	- It improves performance by running tasks simultaneously
+- An application can be splited into small tasks
+	- Also known as light-weight process
+	- Java calls them Thread
+
+Java API to work with threads
+- Runnable (I)
+	- run()
+	- Any piece to code user wants to execute as a separate thread
+	  shall be implemented as run() of Runnable interface
+
+- Thread (C)
+	- A Thread class object represents a thread of execution
+
+There are 2 ways of creating threads in Java
+	1- By implementing Runnable interface
+		- Multiple threads executes single piece of code
+		- Multiple threads shares common state
+	2- By extending Thread class
+		- Thread per state
+
+start() of Thread
+- Is responsible to create a separate thread of execution
+- Calling respective run() method inside the newly created thread
+
+Daemon Thread
+- Thread that runs in the background
+- Stops automatically once all running threads stops
+
+Thread Safety
+- Achieved using "Synchronized" methods
+- Doesn't allow multiple threads to work together
+- Lock the object once a synchronized method is called
+- Other threads has to wait until thread lock is released
+
+---------------------------------------------------------
+File I/O
+- Package is java.io
+- Read/Write to/from files on file system
+- In Java programs do not have direct access to native file-system
+	- That is why in almost 30 years of Java language no one ever wrote a virus in Java
+- JVM put his feet in between application and file system
+	- To make sure no illegal activities are happening
+	- Every communication between files and application goes through the JVM
+- The connection to the file is called a stream
+- There are 2 different types of streams
+	- Character
+		- Deal with character data i.e. ASCII and UNICODE
+		- Data type of this stream is "char"
+		- Root classes of character stream
+			- Reader
+			- Writer
+				- File
+				- Buffered
+	- Binary
+		- Deals with binary data i.e. Zeroes and Ones and ASCII
+		- Data type of this stream is "byte"
+		- Root classes of binary stream
+			- InputStream
+			- OutputStream
+				- File
+				- Buffered
+				- Object
+				- Data
+
+Buffers:
+- Temporary memory area in RAM
+- Used for improving reading and writing performances
+	- As reading/writing to memory is faster than HDD
+- Also allows to read chunk of data at once unlike reading a byte/character from file
+
+Serialization:
+- Is a process to write state of any Java object to the underlying stream
+	- ObjectOutputStream is responsible for serialising an object
+- In this the state of Java object goes out of the boundaries of JVM
+	- There's a probability of data loss in sending object over any stream
+- Object must implement Serializable interface for this process
+	- It is a marker interface
+	- A marker interface doesn't have any method or fields, its blank
+- It is used just to digitally sign the object valid for serialisation
+- Fields marked with transient keyword does not serialise 
+
+---------------------------------------------------------
+Collection API
+- Shortfalls of an array is, it is fixed in size
+	- Solution to this problem is Data Structures
+	- Popular data structures are LinkedList, Stack, Queue, Binary Tree
+- It is introduced to overcome the shortfalls of arrays
+- It provides classes which are implementation of various well known data structures 
+- It is said to be an optimised implementation of data structures 
+- It is based on generics, hence entertains only objects
+- It is called collection API because the root interface name is Collection
+
+Hierarchy of Collection API
+
+Collection(I)
+- List(I)
+- Set(I)
+	- SortedSet(I)
+- Queue(I)
+- Dequeue(I)
+
+Collection(I):
+- It represents collection of objects
+- One object per elements/node
+
+List(I):
+- Inherits behaviour of Collection(I)
+- It guarantees sequence
+	- Elements can be fetched in the same order they are added
+	- Hence elements can be fetched by their subscript/index
+- List allows duplicate elements
+	- Multiple null elements are possible
+- Implementing classes: ArrayList, LinkedList, Vector(S)....
+
+Set(I):
+- Inherits behaviour of Collection(I)
+- It doesn't guarantee sequence
+	- Elements cannot be accessed using subscript/index
+- It doesn't allow duplicate elements
+- Implementing classes: HashSet, LinkedHashSet
+
+SortedSet(I):
+- Inherits behaviours of Set(I)
+- Elements are maintained in order
+- Implementing class: TreeSet
+- To sort custom or user defined objects, logic can be provided in either of following ways
+	- By making object Comparable
+		- Make class implement java.lang.Comparable(I)
+	- By providing explicit Comparator
+		- Separate class implementing java.util.Comparator(I)
+
+Traversing over collections:
+- For loop with index works well with List type of collection
+- Iterator(I) is helpful in traversing over any type of collection
+	- ListIterator(I) designed for List type of collection, traverse in bi-direction
+- For-each loop is the most comfortable option to traverse on collections
+
+There's another type of collection that holds 2 objects
+Map(I)
+- It holds 2 objects per element/node
+- It represents key/value pair
+- It doesn't allow duplicate keys
+- Implementing classes: HashMap, HashTable(S), ResourceBundle, Properties, LinkedH...
+
+SortedMap(I)
+- Inherits behaviour of Map(I)
+- Keys are maintained in order
+- Implementing class: TreeMap
+- Require sorting logic for custom objects for comparison 
+
+Comparable and Comparator
+- Both does the job of comparing 2 Java objects
+- Class that implements Comparable can only provide one implementation of algorithm
+- Comparator provides flexibility of creating multiple comparison logic
+- Both the interfaces are functional interfaces hence can be implemented in lambda way
+- Comparator is more handy as it doesn't force to manipulate existing class
+
+LinkedHashSet
+ConcurrentHashMap
