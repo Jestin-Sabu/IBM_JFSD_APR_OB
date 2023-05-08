@@ -1,0 +1,24 @@
+-------------------------------------------------------------------------------
+Test set: com.ibm.test.TestMobileDao
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 0.004 sec <<< FAILURE!
+com.ibm.test.TestMobileDao.testFetchAll()  Time elapsed: 0.001 sec  <<< FAILURE!
+java.lang.NullPointerException: Cannot invoke "ibm.com.dao.MobileDao.fetchAll()" because "com.ibm.test.TestMobileDao.mobileDao" is null
+	at com.ibm.test.TestMobileDao.testFetchAll(TestMobileDao.java:45)
+
+com.ibm.test.TestMobileDao.testUpdate()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException: Cannot invoke "ibm.com.dao.MobileDao.update(ibm.com.entity.Mobile)" because "com.ibm.test.TestMobileDao.mobileDao" is null
+	at com.ibm.test.TestMobileDao.testUpdate(TestMobileDao.java:54)
+
+com.ibm.test.TestMobileDao.testDelete()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException: Cannot invoke "ibm.com.dao.MobileDao.delete(int)" because "com.ibm.test.TestMobileDao.mobileDao" is null
+	at com.ibm.test.TestMobileDao.testDelete(TestMobileDao.java:60)
+
+com.ibm.test.TestMobileDao.testFetch()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException: Cannot invoke "ibm.com.dao.MobileDao.fetch(int)" because "com.ibm.test.TestMobileDao.mobileDao" is null
+	at com.ibm.test.TestMobileDao.testFetch(TestMobileDao.java:37)
+
+com.ibm.test.TestMobileDao.testSave()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException: Cannot invoke "ibm.com.dao.MobileDao.save(ibm.com.entity.Mobile)" because "com.ibm.test.TestMobileDao.mobileDao" is null
+	at com.ibm.test.TestMobileDao.testSave(TestMobileDao.java:30)
+
