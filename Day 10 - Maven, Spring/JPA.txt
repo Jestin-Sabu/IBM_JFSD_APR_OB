@@ -1,0 +1,97 @@
+JPA: Java Persistence API
+
+ORM: Object Relational Mapping
+
+Employee				emp
+- empNo				- emp_no
+- empName			- ename
+- salary				- salary
+
+- It is a paradigm
+- Emphasis on mapping Java Object with Database Tables
+- Shall automatically take care of generating tables
+- Create tables relationships based on object associations
+- Provide simple API to perform CRUD operations
+- Make database interaction smooth and easy
+	- In short it should make JDBC much more easier to implement
+- Few popular ORMs in the market are...
+	- Hibernate
+	- TopLink
+	- EclipseLink
+	- JDO
+	- iBatis
+
+JPA: 
+- It is a standard for ORMs
+- All ORMs must support standard JPA specification apart from native API
+- Support standard configuration file apart from their standard config files
+- This makes migration from 1 ORM to another much easier and tolerable
+	- It would save efforts of changing the code and configuration
+
+META-INF/persistence.xml
+- Standard configuration file for JPA
+- Persistence unit name
+	- Unique name for each persistence provider or database
+- Persistence provide
+	- Underlying ORM framework
+- Database connection properties
+	- To specify database connection URL, username, password, driver etc.
+- Hibernate Dialect
+	- Hibernate can talk to handful of databases
+	- Each database may be using different syntax and semantics
+	- Hibernate uses dialect to interact with each database
+- Hibernate Show SQL
+	- As hibernate generates queries for us
+	- We can ask hibernate to show generated queries
+- Hibernate HBM-DDL auto
+	- Data Definition Language : For creating database table/sequences etc.
+	- There are 2 main strategies [create/update]
+	- In create strategy it alway drops all existing tables and create new tables every time code run
+	- In update strategy if table exist it works with that, otherwise creates a new table
+
+Entity: A class associated/mapped with a database table.
+An entity represents a record in a database table
+
+Common JPA Annotations 
+@Entity	
+	- To make a class an entity or to map object with table
+@Table	
+	- To specify the table name if different from entity name
+	- Otherwise it consider class name as table name
+@Id
+	- To specify the field will represent primary key column in database table
+@Column
+	- To specify different column name in the table for this field
+	- To specify size of column in table
+@GeneratedValue
+	- To auto generate the value for specified column
+	- Mainly for Id columns
+	- There are several strategies to generate values
+		- Such as [Sequence, Table, Identity, Auto]
+@ManyToOne
+	- To specify this entity is a child entity of specified parent
+@JoinColumn
+	- To specify the foreign key column of the parent entity
+@OneToMany
+	- To specify this entity is the parent entity
+	- In this annotation fetch type is by default lazy
+		- That means when parent entity record is fetched it doesn't pull child entity records
+	- Fetch type can be set as eager
+		- That means when parent entity record is fetched is pulls child records too
+	- Cascade effects can also be set using cascade property of this annotation
+		- To specify the cascading effects like
+			- When parent entity is persisted all its associated child objects should also be saved
+			- When parent entity is modified all its associated child records should also be updated
+			- When parent entity is deleted whether child records should be removed or made orphans
+
+Mobile
+- code
+- brand
+- model
+- price
+
+Entity
+Dao
+TestDao
+
+* Perform all CRUD operations

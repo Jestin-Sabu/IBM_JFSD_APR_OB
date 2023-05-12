@@ -1,0 +1,68 @@
+Spring Framework
+
+Application Layers
+
+- Presentation Layer
+	- Servlet/JSP
+	- Angular
+	- React
+	- Mobile Apps
+	- ATM
+	- GUI Clients
+	- Spring MVC
+
+- Business Logic (BL) Layer
+	- EJB (Enterprise Java Beans)
+	- Spring Framework
+		- IoC
+		- AOP
+		- Spring Boot
+
+- Persistence Layer
+	- JDBC
+	- Hibernate
+	- JPA
+	- MainFrames
+	- Spring Data
+
+* Spring framework is designed for End-to-End application development
+* Spring framework provides seamless integration with many technologies/API
+* Designed by Rod Johnson
+
+Dependency Injection (DI) is the core of Spring framework
+Spring framework calls is IoC (Inversion of Control)
+
+// Plumbing
+1. AccountDao dao = new AccountDao();
+2. AccountService service = new AccountService(dao);
+// Logic
+3. service.transfer(1, 2, 100);
+
+Why use Spring framework?
+1- It takes care of plumbing
+	- Injecting the dependencies and providing object whenever needed
+2- It lets developers focus only on business logic
+
+Configuration files
+- Used to inform Spring framework about the classes and dependency information
+- Spring supports 3 different types of configurations
+	- XML based
+	- Annotation based
+	- Java based
+
+ApplicationContext(I)
+- ClassPathXmlApplicationContext (C)
+- FileSystemXmlApplicationContext (C)
+
+ApplicationContext(I)
+- It represents Spring IoC container
+- It is responsible for Loading beans from XML file or Annotated classes
+- It is responsible for injecting dependencies
+- It returns objects when requested
+
+Types of Dependency Injections:
+- Constructor injection
+- Setter injection
+
+
+

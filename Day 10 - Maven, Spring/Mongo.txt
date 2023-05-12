@@ -1,0 +1,106 @@
+Mongo DB:
+
+Sample JSON document
+{
+	name:"Zubair",
+	age:41,
+	gender:"Male",
+	address:{
+		street:"Main Street",
+		city:"Thane",
+		zip:123123
+	},
+	hobbies:["Sleeping","Music","Cartoons"],
+	relations:[
+		{name:"Java", relation:"Brother"},
+		{name:"MJ"m relation:"Fan"}
+	]
+}
+
+Mongo DB:
+- Its an open-source document oriented database
+- Its a leading NoSQL(Not Only SQL) database
+- It is written in C++
+- Its a cross-platform database
+- It works on the concept of document and collection
+Database:
+- Is a container for collections
+- There's a separate file created for each database in file system
+- MongoDB can hold multiple databases
+Collection:
+- Its a group of MongoDB documents
+- A collection can be interpreted as a table in RDBMS
+- Document within a collection can have different fields
+Document:
+- A document is a set of key-value pairs
+- It need not have the same set of fields or structure within a collection
+- It may hold different types of data
+
+MongoDB Commands
+- Command to start mongo
+>mongo
+
+- To show all databases
+>show dbs
+
+- To create and use database
+>use db_name
+
+- To check current database
+>db
+
+- To show collections within current database
+>show collections
+
+- To create a collection
+> db.createCollect('person')
+
+- To insert a document to collection
+> db.person.insert({name:"Polo",age:21})
+
+- To insert multiple documents at once
+> db.person.insert([ {name:"Jack",age:30}, 	{name:"Mona",age:23,gender:"Female"}])
+
+- To update a document inside collection
+> db.person.update({name:"Polo"},{name:"Polo",age:21,gender:"Male"})
+
+- To update only a field in a document
+> db.person.update({name:"Jack"}, {$set:{gender:"Male"}})
+
+- To update a document if not found then insert
+> db.person.update({name:"Kim"},
+... {name:"Kim",age:19,gender:"Female",city:"Goa"}, {upsert:true})
+
+- To remove a field from a document
+> db.person.update({name:"Kim"}, {$unset:{city:1}})
+
+- To remove a document from collection
+> db.person.remove({name:"Jack"})
+
+- To count documents within collection
+> db.person.find().count()
+
+- To display limited records
+> db.person.find().limit(2)
+
+- To find document based on condition
+> db.person.find({age:{$gt:20}})
+
+> db.person.find({$or:[{name:"Polo"},{name:"Kim"}]})
+
+- To sort documents based on a field
+- Ascending
+> db.person.find().sort({name:1})
+- Descending
+> db.person.find().sort({name:-1})
+
+To rename a collection
+>db.customers.renameCollection("NewName");
+
+To remove a collection
+>db.mycollection.drop()
+
+To drop database
+>use mydb
+>db.dropDatabase()
+
