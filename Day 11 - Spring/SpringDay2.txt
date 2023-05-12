@@ -1,0 +1,45 @@
+Default instantiation behaviour of Spring Application Context is Singleton
+
+Scopes in Spring
+- Singleton (Default)
+- Prototype
+	- Similar to Factory method
+	- But requires different constructor for multiple objects
+
+Annotation Based configuration treats Spring beans as components
+- Hence beans are annotated with @Component annotation
+- @Component annotation has few stereotype children
+	- @Service
+	- @Repository
+	- @Controller
+	- @Configuration
+- They all performs the same task but, different names for different purpose
+- It improves the readability of the code
+
+@Autowired
+- It is used to automatically inject the dependency in Java class
+	* Without a need of constructor or setter
+- By default it follows dependency by type for injection
+- In case of achieving by name dependency
+	- @Qualifier annotation is used along with @Autowired 
+
+ApplicationContext instantiation behaviour
+- Eager instantiation (default)
+	- Instantiate all the beans at the time of creating container
+- Lazy instantiation
+	- Instantiate bean only when it is needed
+
+Design Patterns: Common solution to recurring problem.
+- Factory method: Create and returns new object per request
+	- Spring calls it prototype
+- Singleton: Creates an object, returns reference of the same to all requests
+	- Default pattern of Spring
+
+Configuration File
+- An xml document
+- Name of the file could be anything
+- Classes are listed in this file as beans
+- All the dependencies of beans specified here
+- IoC container reads this file for configuration
+
+
