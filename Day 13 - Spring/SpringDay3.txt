@@ -1,0 +1,72 @@
+Spring Test
+
+- JUnit dilema
+	- Container is created inside the unit test method
+	- Each unit test create separate container object
+	- Cannot test multiple units inside single container object
+	- * Container is referred for ApplicationContext object
+	- Injecting of component/beans not possible inside test classes
+	- Has limitation of its own when testing a whole application.
+
+- Spring Test
+	- It just the other way round.
+	- This makes Junit runs inside the Spring container precisely ApplicationContext
+	- It uses @RunWith annotation to specify the spring junit class to integrate Junit inside container
+	- Embedded JUnit inside container gives more room for testers to test multiple unit tests
+	- Without have to bother about creating container object per unit test
+	- Even it encourages Spring style of injecting beans directly into Test classes
+	- That saves many lines of code and allows to test multiple units within container
+	- @ContextConfigurator annotation provides flexibility to directly refer to the config files/classes
+		- locations attribute helps in specifying the xml file location
+		- classes attribute helps in specifying java config file
+-------------------------------------------------------
+
+Spring JPA
+- We do not interact with JPA specific classes
+- Spring provides classes to interact with JPA
+- Spring reads properties from config file and configure
+	- EntityManagerFactory
+	- TransactionManager
+- Let us directly inject EntityManager to repo classes
+	- Using @PersistenceContext annotation
+* In Spring we refer DAO classes as Repository classes hence we use @Repository annotation
+- Following are the steps to keep in mind when integrating Spring with JPA
+- POM file enteries
+	- Spring Context
+	- Spring Test
+	- Spring ORM
+	- Hibernate EntityManager
+	- Database driver
+	- JUnit
+- META-INF/persistence.xml
+	- Persistence provider
+	- Entity classes
+	- Database details
+	- Hibernate specific entries
+- applicationContext.xml
+	- Package scan
+	- EntityManagerFactory bean
+		- Persistence Unit property
+	- TransactionManager bean
+		- factory property
+	- Annotation driven transaction
+
+Transaction
+- Single/Set of instruction(s) performed on Database
+- Important to achieve atomic nature i.e. "Either everything should work or nothing"
+- A transaction should be..
+	- Atomic Consistent Isolated Durable (ACID)
+	- Either everything should work or nothing
+	- No data loss whatsoever
+	- Should not affect other transactions
+	- If agrees to commit, then commit. No matter what
+
+- In JPA transactions are bean managed, that means..
+	- Developer has to begin and end transaction wherever required
+	- Transactions are mandatory to perform DML operations
+- Transactions are closed with either commit or rollback
+	- A good practice is to rollback on exception
+- In Spring transactions are container managed, that means..
+	- Spring IoC container will take care of beginning and ending transaction
+	- Method/class should be marked with @Transactional annotation
+

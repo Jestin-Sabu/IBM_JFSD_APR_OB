@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: ax3.TestMyLife
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.081 sec <<< FAILURE!
+ax3.TestMyLife.testLife()  Time elapsed: 0.081 sec  <<< FAILURE!
+org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'ax3.MyLife' available
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBean(DefaultListableBeanFactory.java:340)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1156)
+	at ax3.TestMyLife.testLife(TestMyLife.java:14)
+
