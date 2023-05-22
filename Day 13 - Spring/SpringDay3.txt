@@ -70,3 +70,37 @@ Transaction
 	- Spring IoC container will take care of beginning and ending transaction
 	- Method/class should be marked with @Transactional annotation
 
+- CMT attributes 
+		- Required
+			- If existing transaction found, it will work inside that, otherwise creates its own and run inside that.
+		- RequiresNew
+			- Always works inside a new transaction, if existing transaction found, he suspends that.
+		- Mandatory
+			- If existing transaction found, works smoothly inside that, otherwise throws exception.
+		- Supports
+			- Don't need but support transaction, If existing transaction found, it will work inside that, otherwise no need.
+		- NotSupported
+			- Don't support a transaction, if existing transaction found, he suspends that.
+		- Never
+			- Don't want a transaction, if called inside one, throws exception.
+
+- Isolation levels
+	- For reading data from the database, different levels of isolations provided
+		- Read uncommitted
+			- Reads dirty records
+		- Read committed
+			- Phantom records
+		- Repeatable read
+			- Multiple hits to the database
+		- Serializable
+			- Lock the database
+
+- Distributed transaction
+	- When multiple databases participate in a transaction
+	- Generally managed under different controls
+	- Possibly in different geographical locations
+	- Possible way is 2 phase commit
+		- 1 phase asks all the participating databases to agree upon doing a task
+			- If any of the participant disagree the transaction is cancelled
+		- 2 phases asks them to commit the changes they agreed upon
+			- There's no way to say no in this phase
