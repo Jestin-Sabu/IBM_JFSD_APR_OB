@@ -1,0 +1,68 @@
+Servlets
+- Capable of understanding HTTP requests
+- It can read HTTP parameters
+- It can handle different kind of contents like xml, json, etc.
+
+JSON
+ReST
+
+MVC: Model View Controller
+- Its a design pattern for Web Applications
+
+Model: Represents data
+View: Represents user interaction
+Controller: Responsible for update model based on view and vice-versa
+
+SOA: Service Oriented Architecture
+- Service is a set of functions/capabilities
+- A service is a facility supplying required job
+- SOA is a paradigm
+	- It has distributed capabilities
+	- It works under different ownerships
+	- It helps build and manage complex applications
+	- It helps build scalable and resoluble business systems
+
+- Responding with different type of data based on clients is called
+- Content Negotiation
+Browser	--->	HTML
+ATM		--->	Text
+Angular	--->	JSON
+Service	--->	XML
+
+- A service/application generates different kind of response content
+	based on the type of client
+
+ReST ( Representational State Transfer)
+- It is an implementation of SOA
+- Very popular among modern applications
+- As the name suggests it supports Content Negotiation
+	- It can respond HTML, TEXT, XML, JSON
+- It uses HTTP protocol for communication
+	- It runs on top of HTTP
+- It uses the uniqueness of the URL 
+	- That makes understanding requests easy
+	- Sample ReST request URLs
+		- www.cinema.com/movies
+		- www.cinema.com/movies/Aamir
+		- www.cinema.com/movie/Dangal/rating
+		- www.cinema.com/movies?year=2022
+		- www.cinema.com/movie/3idiots/cast
+- It maps HTTP methods to CRUD operation
+	- POST		--> 	Create
+	- GET			-->		Retrieve
+	- PUT			-->		Update
+	- DELETE		-->		Delete
+
+Spring Boot:
+- Excludes boilerplate code from applications
+- It promotes convention over configuration
+- To reduce boilerplate code/configuration
+- It supports ReST
+	- It supports content negotiation
+- It entertains requests from variety of clients
+- It is designed for Micro-services
+- It has support for Cloud
+	- With Spring Cloud
+- It makes JPA integration magical
+	- With Spring Data
+
