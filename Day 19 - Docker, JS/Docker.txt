@@ -1,0 +1,52 @@
+Docker
+What is Docker?
+- Docker is an open source containerisation platform.
+- It enables developers to package application into containers.
+- Packaging contains 
+	- Source code
+	- Operating System
+	- Libraries
+	- Dependencies
+* Executable components combining above mentioned items to run the code in any environment.
+
+Docker image:
+- It is a readonly template that contains set of instructions for creating a container that can run on Docker platform.
+- Its a convenient way to package application and its configuration and environment which can be share with other and also reused.
+
+To check installed docker version
+>docker -v
+
+To check docker modules versions
+>docker version
+
+To check local docker images
+>docker images
+
+* For a fresh new installation, the result would be blank
+
+Pulling hello-world image from docker hub
+>docker pull hello-world
+
+To run hello-world docker image
+>docker run hello-world
+
+To build a docker image of hola-docker Java project
+>docker build -f Dockerfile -t hola-docker
+>docker build -f Dockerfile -t hello:latest hola-docker
+
+>docker build -t username/repo-name:tag app-name
+>docker build -t imzubair/ibm423:hola hola-docker
+
+>docker build -t imzubair/ibm423:hola D:/workspace/training/hola-docker
+
+To run a docker image build with repo and tag name
+>docker run imzubair/ibm423:hola
+
+>docker build -t imzubair/ibm423:boot docker-boot
+
+To run spring boot docker image
+>docker run -p 8880:8880 imzubair/ibm423:boot
+
+Pushing local docker image to docker hub
+>docker push hub-user/repo-name:tag-name
+
