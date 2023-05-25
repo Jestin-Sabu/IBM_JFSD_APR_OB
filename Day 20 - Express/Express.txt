@@ -1,0 +1,62 @@
+JavaScript
+- Its an interpreted language
+- Interpreted by the browser
+	- Browsers have JavaScript Engine
+		- Chrome engine is called V8
+		- I.E. engine is called Chakar
+		- Firefox engine is called Firemonkey
+* Google's V8 is the most optimised JS engine among all
+
+Node.js
+- Its a JavaScript Runtime Environment
+- Developed using C++
+- Has its own Object library
+* Node.js is not a browser
+- Developed in 2009 by Ryan Dahl 
+	- He realised the power of JavaScript
+	- And wanted to integrate it with other services
+		- Like File-System, Http, OS etc.
+	- He took the most powerful/optimised JS engine i.e. Chrome's V8
+	- And wrote the runtime environment around V8
+	- A new runtime for JavaScript is invented.
+
+Node provides a very powerful package manager called NPM
+NPM stands for Node Package Manager
+NPM helps in downloading and installing most of JS modules using CLI
+
+Express JS
+- Web Application Framework
+- It provides simple API to build website
+- Provides minimal interface to build web applications
+- It has lots of built-in tools required to build web applications
+- Express modules can be installed using NPM
+
+To generate package.json inside an application
+>npm init
+To install express module in an application
+>npm install --save express
+To install pug express module in application
+>npm install pug
+
+Pug
+- Earlier known as Jade
+- Is sort of a language to design HTML pages
+- It provides simple English language way of describing HTML page
+	- On that basis Pug produces HTML
+	- Support for reusability
+	- Most popular template language used with Express
+
+
+Steps to create express application
+1- Create a folder for application eg:demo
+2- Get inside the folder "demo"
+	>cd demo
+3- Generate express application
+	>npx express-generator
+4- Install dependencies
+	>npm install
+5- Execute the application
+	>npm start
+By default application runs on port 3000
+	URL: http://localhost:3000
+

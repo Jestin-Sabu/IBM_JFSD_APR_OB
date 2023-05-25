@@ -1,0 +1,18 @@
+doctype html
+html 
+    head 
+        title Person Form 
+    body 
+        h1  Person Details 
+        form(method="post", action="/save") 
+            b Name 
+            input(type="text", name="name") 
+            br 
+            b Age 
+            input(type="number", name="age")
+            br
+            b City
+            input(name="city")
+            br
+            input(type="submit" , value="Save Person")
+
