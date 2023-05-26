@@ -1,0 +1,17 @@
+<form (ngSubmit)="validate()">
+  <div id="username">
+    <label for="userid">Username</label>
+    <input name="userid" [(ngModel)]="auth.userid" />
+  </div>
+  <div id="password">
+    <label for="password">Password</label>
+    <input type="password" name="password" [(ngModel)]="auth.password" />
+  </div>
+  <button id="login-button" type="submit">Login</button>
+</form>
+
+<div [hidden]="!flag">
+  Username: {{ auth.userid }}<br />
+  Password: {{ auth.password }}<br />
+  Role: {{ auth.role }}
+</div>

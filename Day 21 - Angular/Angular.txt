@@ -1,0 +1,133 @@
+Command to install specific Angular CLI version 
+>npm install -g @angular/cli@12
+
+Command to uninstall angular cli
+>npm uninstall -g @angular/cli@12
+
+To install latest angular cli version
+>npm install -g @angular/cli
+
+To check angular cli version details
+>ng --version
+
+-----------------------------------------------------------------------------
+Traditional Web Application
+- HTML page and its supported files are downloaded per request
+	- Each page carries its own CSS, JS and data in JSON format
+	- Browser has to interpret every piece downloaded for every request
+		- Result: Slow page loading and slow response time
+
+Single Page Web Application (SPA)
+- For the first request
+	- All the content is downloaded from the server
+		- Like HTML, CSS, JavaScript, JSON(data)
+	- From next request onwards
+		- The structure of the web page remains intact
+			- Only data requested is downloaded and updated on the page
+
+- Angular is Single Page Web Application Framework
+- Angular uses TypeScript designed by Microsoft as main language
+- TypeScript is the superset of JavaScript
+	- TypeScript is transpiled into JavaScript
+- TypeScript is a syntactical language to simplify writing JavaScript
+-----------------------------------------------------------------------------
+
+Command to create angular application
+>ng new hello-app
+[Options]
+	- Select N for Router
+	- Press Enter for CSS
+* It will create application structure and download node-modules
+
+* Once project is created, change directory to project folder
+To run angular application
+>ng serve
+	--OR--
+To run angular application and open it in browser
+>ng serve --open
+
+* Angular application by default runs on port no:4200
+
+Angular applications is made up of components
+The root component is named "app"
+Each Angular component is made up of 4 pieces
+- app.component.ts
+	- Contains data and logic as functions
+	- Decorated with @Component annotation
+	- Specified component selector/tag name
+- app.component.spec.ts
+	- Contains test cases of script 
+- app.component.html
+	- Contains the template of the component i.e. UI
+- app.component.css
+	- Contains style sheet for template
+
+* The single page HTML file of Angular application is "index.html" inside "src"
+
+To display result/output of data(variable) Angular uses {{ }} (Interpolation) operator
+This operator is used for one-way binding i.e. displaying data from expressions. 
+
+For two-way binding Angular provides [(ngModel)] directive
+- To bind backend variable/field with front-end form input.
+
+Everything starts with an "ng" is said to be an Angular directive
+Directives control HTML elements in angular way
+They are used to extend the power of HTML by providing new syntax.
+
+Types of Directives:
+- Structural
+	- *ngIf
+	- *ngFor
+	- *ngSwitch
+- Attribute
+	- ngStyle
+	- ngClass
+- Built-In
+	- ngModel
+
+Binding in Angular
+{{ }} Interpolation operator
+- This operator is used to display data of a field in TS file on UI
+- We consider it as One Way Binding
+	- That means we can just show the data on UI
+
+[(ngModel)]
+- This operator is used inside HTML form fields
+- We consider it for Two Way Binding
+	- That means showing data on the form field and changes should reflect back
+-----------------------------------------------------------------------------
+
+Adding component to angular application
+>ng generate component comp_name
+	-- OR --
+>ng g c comp_name
+
+app.module.ts
+It is like a component and dependency management file
+It contains list of all the components inside the Angular application
+It also maintains dependencies like Forms, Http modules for this application
+
+package.json
+This file stores details of the angular modules which are downloaded and kept inside node_modules folder
+
+angular.json
+This file has application related details like commands, external style and script file paths or bootstrap path
+
+- To install bootstrap into an Angular application
+>npm install bootstrap@4
+- This installs bootstrap library into node_modules folder
+- It further needs to be configured inside angular.json
+	- We need to specify CSS and JS paths of bootstrap library 
+-----------------------------------------------------------------------------
+
+Being a SPA (Single Page Application) framework
+- Hyperlinks are not a good idea for switching between components
+	- Coz they are not different HTML pages
+- On click of a Link or Button a different component should be rendered
+- To achieve this, Angular provides the concept of Routing
+	- To switch pages Hyperlinks are the solution 
+	- In the case of components Routing is used for switching among components
+
+The output of the component is rendered in a place where this tag is specified
+<router-outlet></router-outlet>
+
