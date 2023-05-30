@@ -7,6 +7,12 @@
     <label for="password">Password</label>
     <input type="password" name="password" [(ngModel)]="auth.password" />
   </div>
+  <div id="role">
+    <label for="role">Role</label>
+    <select [(ngModel)]="auth.role" >
+      <option *ngFor="let r of roles" [value]="r">{{r}}</option>
+    </select>
+  </div>
   <button id="login-button" type="submit">Login</button>
 </form>
 
