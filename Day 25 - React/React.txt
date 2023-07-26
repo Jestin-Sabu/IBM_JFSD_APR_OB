@@ -1,0 +1,41 @@
+React JS
+- JavaScript based Frontend Application framework
+- A JavaScript library for building reusable UI components
+- Developed at Facebook
+- Open Source Project
+- Used for developing SPA (Single Page Web Application)
+- Supports unidirectional and bidirectional data flow
+- React support JavaScript + XML (JSX)
+
+- React has 3 modules
+- To create a react application below modules must be installed using NPM
+	- React
+	- React-DOM
+	- WebPack
+
+Earliest versions:
+>nam install react react-dom web-pack app-name
+Never versions:
+>npx create-react-app app-name
+
+React application is like a tree of components
+- Root component of the application is "App"
+	- The output of the App component is rendered by index.js on index.html
+		- On div tag with root id
+
+There are 2 ways of creating React JS component
+- Function component
+- Class component
+
+Creating first react app
+>npx create-react-app hello-app
+
+Life-Cycle of React component
+- Mounting and Unmounting of components
+	- Life-cycle functions
+		- componentDidMount()
+		- componentWillUnmount()
+
+Installing React Routing
+>npm install react-router-dom
+

@@ -1,0 +1,32 @@
+<div class="d-flex mt-5 justify-content-center align-items-center">
+    <div class="row col-md-6">
+        <div class="card">
+            <div class="card-header mt-2">
+                <h5>List of Flight</h5>
+            </div>
+            <div class="card-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Code</th>
+                    <th scope="col">Carrier</th>
+                    <th scope="col">Source</th>
+                    <th scope="col">Destination</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let f of flights">
+                    <th scope="row">{{ f.code }}</th>
+                    <td>{{ f.carrier }}</td>
+                    <td>{{ f.source}}</td>
+                    <td>{{ f.destination }}</td>
+                    <td><button (click)="delete(f.code)" class="btn btn-primary btn-sm">Delete</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        </div>
+    </div>
+  </div>
+  

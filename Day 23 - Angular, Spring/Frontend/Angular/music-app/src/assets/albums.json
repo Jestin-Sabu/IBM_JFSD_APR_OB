@@ -1,0 +1,20 @@
+[
+    {
+        "id":123,
+        "title": "Rockstar",
+        "artist": "AR Rahman",
+        "genre": "Rock"
+    },
+    {
+        "id":213,
+        "title": "RockOn",
+        "artist": "Shankar",
+        "genre": "Rock"
+    },
+    {
+        "id":312,
+        "title": "Something",
+        "artist": "Okay",
+        "genre": "Jazz"
+    }
+]

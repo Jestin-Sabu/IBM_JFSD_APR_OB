@@ -1,0 +1,44 @@
+Monolithic:
+- A single tiered software application
+	- UI and Data access are combined into a single program
+- Independent from other applications
+- Application designed without modularity
+	- Module is describe as a reusable independent part of application
+
+
+Microservice:
+- Smaller independent component
+- Developed, deployed and functions independently
+- Being small they are easy to manage and modify
+- Supports heterogeneity of technology
+	- Enables to pick the right tool for each job instead of having one-size-fits-all approach
+- Easy to deploy
+	- Making changes to single service and deploy independently
+	- Allow to deploy code faster
+	- If problem occurs can be rollback quickly
+	- Enable to bring new functionality faster
+- Failure of one service does not affect the whole system
+
+Principles for Microservices:
+- Automation
+- Independent
+- Isolated
+- Observable
+
+Developer Independence
+With small teams working on a Microservice, it contributes to much more developer freedom and independence.
+
+Isolation and Resilience
+If one of the components should fail, due to issues including the technology becomes outdated or the code in the service cannot be developed any further, developers are able to spin up another while the rest of the application continues to function independently.
+
+Scalability
+Due to the fact that microservices are made of much smaller components, they are able to take up fewer resources and therefore more easily scale to meet increasing demand of that specific component only
+
+Autonomously Developed
+As opposed to monoliths, individual components are much easier to fit into continuous delivery pipelines and complex deployment scenarios. Only the pinpointed service needs to be modified and redeployed when a change is needed, and if a service should fail, the others will continue to function independently.
+
+Relationship to the Business
+Microservice architectures are split along business domain boundaries, organised around capabilities such as logistics, billing, etc.
+
+Microservices are an excellent option for situations where developers can’t fully predict what devices will be accessed by the application in the future, and they allow quick and controlled changes to the software without slowing the application as a whole.
+

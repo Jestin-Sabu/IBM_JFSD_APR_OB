@@ -1,0 +1,35 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link"  [routerLink]="['/add']" routerLinkActive="active">Add Album</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link"  [routerLink]="['/list']" routerLinkActive="active">List Albums</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link"  [routerLink]="['/searchbyid']" routerLinkActive="active">Search By ID</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link"  [routerLink]="['/searchbytitle']" routerLinkActive="active">Search by Title</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link"  [routerLink]="['/searchbyartist']" routerLinkActive="active">Search by Artist</a>
+  </li> 
+  <li class="nav-item">
+    <a class="nav-link"  [routerLink]="['/searchbygenre']" routerLinkActive="active">Search by Genre</a>
+  </li>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="#">Active</a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button">Dropdown</a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
+    </li>
+  </ul> 
+</ul>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,63 @@
+Kubernetes (K8S):
+- Its an open source Container Management Tool
+- Developed by Google Lab in 2016
+- It automates
+	- Container Deployments
+	- Container Upscaling
+	- Container Downscaling
+	- Container Load Balancing
+	* Called as Container Orchestration
+- It can group multiple containers into one logical unit for managing
+	- That forms a cluster of containers 
+- It works seamlessly with all cloud providers
+
+* Microservices architecture: Kubernetes is well-suited for managing microservices architectures, which involve breaking down complex applications into smaller, modular components that can be independently deployed and managed.
+
+* Cloud-native development: Kubernetes is a key component of cloud-native development, which involves building applications that are designed to run on cloud infrastructure and take advantage of the scalability, flexibility, and resilience of the cloud.
+
+* Continuous integration and delivery: Kubernetes integrates well with CI/CD pipelines, making it easier to automate the deployment process and roll out new versions of your application with minimal downtime.
+
+* Hybrid and multi-cloud deployments: Kubernetes provides a consistent deployment and management experience across different cloud providers.
+
+* High-performance computing: Kubernetes can be used to manage high-performance computing workloads, such as machine learning, and big data processing.
+
+* A container is a lightweight software component that bundles an application and its dependencies into a single image file. Containers are portable between different platforms, leading to faster application startup and easy scaling.
+
+Kubernetes Management with Helm:
+- In a microservice architecture, you create more microservices as the application grows, making it increasingly difficult to manage. 
+
+- Managing Kubernetes applications across the development lifecycle brings its own set of challenges, including version management, resource allocation, updating, and rollbacks.
+
+- Helm provides one of the most accessible solutions to this problem, making deployments more consistent, repeatable, and reliable.
+
+- Helm is a tool that automates the creation, packaging, configuration, and deployment of Kubernetes applications by combining your configuration files into a single reusable package.
+
+Kubernetes Architecture:
+- Kubernetes has a client-server architecture and has master and worker nodes, with the master being installed on a single Linux system and the nodes on many Linux workstations. 
+- It follows the master-slave model, which uses a master to manage containers across multiple Kubernetes nodes. 
+A master and worker nodes constitute a “Kubernetes cluster”. A container is deployed with the assistance of the Kubernetes master. 
+
+- Kubernetes composed of 2 types of components
+	- Master Node
+	- Worker Node
+
+- Worker Nodes: This is where the actual work happens 
+	-Each Node can have multiple pods and pods have containers running inside them. 
+	– A pod is a group of containers that are deployed together on the same host. 
+			- Pod helps to deploy multiple dependent containers together so it acts as a wrapper.
+			- We can interact and manage these containers primarily through pods.
+	- There are 3 processes in every Node
+		- Container Runtime: needed to run the application containers as pods. 
+		- Kubelet: responsible for starting a pod with a container inside.
+		- Kube-proxy: responsible for forwarding the request from Services to the pods.
+- Master Node: responsible for managing the entire cluster and helps in managing the overall health of a cluster. 
+	- Basically, 4 services run on Kubernetes Master:
+		- Kube-API Server: exposes the Kubernetes API, its the gateway to the cluster for all the REST calls.
+			- We can interact with these APIs using a tool called kubectl.
+			- Kubectl is a CLI for running commands against Kubernetes clusters.
+		- Kube-Scheduler: responsible for distributing the workload.
+			- It intelligently decides on which node to schedule the pod for better efficiency of the cluster.
+		- Kube-Controller-Manager: responsible for running the controllers that handle replication.
+			- It has the node controller, which ensures that nodes are correctly marked as “ready” or “not ready” based on their current state.
+		- etcd: It is a key-value store of a Cluster. The Cluster State Changes get stored in the etcd. 
+			- It acts as the Cluster brain as it inform the Scheduler and other processes about which resources are available and about cluster state changes.

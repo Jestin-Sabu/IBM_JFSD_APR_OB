@@ -1,0 +1,75 @@
+<div class="d-flex mt-5 justify-content-center align-items-center">
+  <div class="row col-md-4">
+    <div class="card">
+      <div class="card-header">
+        <h5>Add Album</h5>
+      </div>
+      <div class="card-body">
+        <form class="was-validated" (ngSubmit)="saveAlbum()" #addFrm="ngForm">
+          <div class="form-group mt-1 mb-1">
+            <label for="id">ID</label>
+            <input
+              class="form-control"
+              type="number"
+              name="id"
+              [(ngModel)]="album.id"
+              placeholder="Album ID"
+              pattern="[1-9][0-9]{2,}"
+              #id="ngModel"
+              required
+            />
+            <div *ngIf="id.dirty && id.invalid" class="alert alert-danger">
+              Invalid Album ID
+            </div>
+          </div>
+          <div class="form-group mt-1 mb-1">
+            <label for="title">Title</label>
+            <input
+              class="form-control"
+              type="text"
+              name="title"
+              [(ngModel)]="album.title"
+              placeholder="Album Title"
+              pattern="[A-Z][a-z]{3,}"
+              #title="ngModel"
+              required
+            />
+            <div
+              *ngIf="title.dirty && title.invalid"
+              class="alert alert-danger"
+            >
+              Invalid Album Title
+            </div>
+          </div>
+          <div class="form-group mt-1 mb-1">
+            <label for="artist">Artist</label>
+            <input
+              class="form-control"
+              type="text"
+              name="artist"
+              [(ngModel)]="album.artist"
+              placeholder="Artist Name"
+              #artist="ngModel"
+              required
+            />
+            <div
+              *ngIf="artist.dirty && artist.invalid"
+              class="alert alert-danger"
+            >
+              Invalid Artist Name
+            </div>
+          </div>
+          <div class="form-group mt-1 mb-1">
+            <label for="genre">Genre</label>
+            <select class="form-control" name="genre" [(ngModel)]="album.genre" required>
+              <option *ngFor="let g of genres" [value]="g">{{ g }}</option>
+            </select>
+          </div>
+          <button class="form-control btn btn-primary mb-2 mt-2" type="submit" [disabled]="!addFrm.valid">
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,1301 @@
+OOPS: Object Oriented Programming System
+- It provides discipline of programming
+- It promotes reusability of code
+- It is modular style of programming
+	- Improves readability of code
+- It is secured style of programming
+
+Object
+- It is an entity, that represents something or someone in a problem domain (Application).
+- Every object has 4 things
+	- Behaviour / Functions / Methods
+	- Attributes / Characteristics / Variables
+		- State: Values in the attribute at a given point of time
+		* State has direct impact on the behaviour of the object
+	- Unique identity
+
+Class
+- It is a mere description of one or group of objects
+- An object is the implementation of its class
+- All the objects shares common characteristics and behaviours 
+	- Their identity and state may differ.
+
+Abstraction
+- It deals with externally visible behaviour of an object
+- Used to identify an object in runtime 
+
+Interface
+- When 2 unrelated entities wants to communicate with each other
+
+Encapsulation
+- Data security
+- There's a layer of operations behind which the data is hidden
+- Data is available but not interactive
+
+Polymorphism
+- One thing having many forms in multiple different contexts
+
+Relationships
+- IS A: Inheritance, Generalisation and Speciailisation
+- HAS A: Association, Containership
+
+Inheritance:
+- Reusability of code
+- Create a new class by acquiring feature of existing class, with/without new features
+- Parent/Child relationship
+- A child class acquires a copy of its parent.
+
+Types: 
+- Single	: Having one parent
+- Multiple	: Having multiple parent
+Note: Java doesn't support multiple inheritance in any way.
+
+Containership:
+- Cardinality based relationship
+	1 .. 1
+	1 .. *
+	* .. *
+
+* A ShoppingCart has multiple Products
+* A Citizen has a Passport
+* A Customer has multiple CreditCards
+-----------------------------------------------------------------------------------
+Platform Independency
+
+JDK : Java Development Kit
+- API : Application Programming Interface (Java Library)
+- Compiler
+
+Hello.java (Java Code)
+	|
+Compiler
+	|
+Hello.class (Bytecode)
+
+JRE	 : Java Runtime Environment
+- API
+- JVM
+	- Class loaded
+	- Verifier
+	- JIT (Just in Time - Interpreter) : At this point the byte code is interpreted into Native code
+	- GC (Garbage Collector)
+	- DEH (Default Exception Handler)
+	- DM (Driver Manager)
+-----------------------------------------------------------------------------------
+
+Naming Conventions
+- ClassNamingConvention
+- methodNamingConvention
+- fieldNamingConvention
+- CONSTANT_NAMING_CONVENTION
+- package.naming.convention
+
+Data Types
+byte				1
+short				2
+int					4
+long				8
+float				4
+double			8
+char				2
+boolean			1
+
+Constant: 8
+- Java will treat it as "int" by default
+Constant: 0.12
+- Java will treat it as "double" by default
+
+Char support Unicode i.e. 65536 chars, unlike ASCII that was only 256
+
+String:
+- Its a class in Java 
+- It is part of java.lang package
+- java.lang is the default package of Java
+	- No explicit import required
+- A String class object represents immutable string
+- String class can be instantiated in two ways
+	- Primitive/Variable style
+		- String s1 = "Hello";
+		- In this case string object is created inside String-Pool memory area
+		- String-Pool is optimised memory area, 
+			- where if 2 strings are holding same value they are made to use common memory
+	- Object/Instance style
+		- String s1 = new String("Hello");
+		- In this case String object is created inside Heap memory area
+
+As String object represents immutable string
+- In a string centric application where manipulations of strings are common
+- Is it advisable to use String class? Answer is NO.
+- Hence there are couple of classes provided by Java as an alternate to String class
+- They are StringBuilder and StringBuffer
+
+Wrapper Classes
+- There's a class for each data type in Java
+- To represent primitive value as an object in certain Java API's where primitives are not allowed.
+- They provide basic utility features, such as extracting specific type value out of string value
+	- Integer.parseInt()
+	- Float.parseFloat()
+	- Double.parseDouble()
+
+- Java supports Auto-Boxing feature to take care of that.
+int x = 10;
+Integer xo = x;
+Integer xc = 50;
+
+int sum = xo + xc;
+
+-----------------------------------------------------------------------------------
+
+Object Creation
+Person p1;			// Declaration
+p1 = new Person();		// Instantiation
+// Merging them
+Person p1 = new Person();		// Definition
+ 
+Constructor
+- Its a special member method of a class
+- It is mainly used for instantiation
+- But, being a method which is called at the time of instantiation
+	- It can be utilised to set the initial state of an object
+- It has the same name as that of the class name
+- If no constructor is defined, runtime provides a default constructor
+	- That is with no parameters
+
+this keyword
+- It represents current object
+	- The object in context
+- this()
+	- To call another constructor on the same object
+		- Constructor chaining
+
+-----------------------------------------------------------------------------------
+
+Employee
+- empNo
+- empName
+- salary
+- Constructors
+- payslip()
+- getSalary()
+
+Manager
+- incentives
+
+Clerk
+- commission
+
+
+Accounts
+- acntNo
+- holder
+- balance
+- Constructors
+- summary()
+- deposit(double amount)
+- withdraw(double amount)
+
+Static members:
+- They are considered as class members
+- Only one copy created for the whole class, shared by all objects of that class
+- Can be accessed directly with the class reference
+
+* Abstract classes cannot be instantiated.
+
+class Alfa {
+	public Alfa() {	Sysout("Alfa Constructor");   }
+	public void demo() {	Sysout("Alfa Demo");   }
+}
+
+class Beta extends Alfa {
+	public Beta() {	Sysout("Beta Constructor");   }
+	public void test() {	Sysout("Beta Test");   }
+	public void demo() {	Sysout("Beta Demo");   }
+}
+
+Alfa a = new Alfa();		// Alfa Constructor
+a.demo();					// Alfa Demo
+Beta bt = (Beta) a;		// Error - This object doesn't have Beta instance around it.
+
+Beta b = new Beta();	// Alfa Constructor -> Beta Constructor
+b.test();					// Beta Test
+b.demo();					// Alfa Demo	-- Beta Demo
+
+Alfa ab = b;				// Up-Casting (Implicit)
+ab.demo();				// Alfa Demo -- Beta Demo
+ab.test();					// Error - Parent class reference cannot access owned members of child
+
+Beta ba = (Beta) ab;	// Down-Casting (Explicit)
+
+
+Accounts
+- acntNo
+- holder
+- balance
+
+Savings
+- Opening balance = 1000
+- Min balance = 1000
+
+Current
+- Opening balance = 5000
+- Min balance = 0
+- Overdraft limit = 10000
+
+				Balance		Overdraft
+				5000			10000
+-3000			2000			10000
+-5000			0				7000
++2000		0				9000
++4000		3000			10000
+
+-----------------------------------------------
+Final keyword
+- Final represent constants
+- variable: That cannot be manipulated
+- method: That cannot be overridden
+- class: That cannot be inherited/extended
+
+Abstract class
+- A class that cannot be instantiated
+- But, it can be extended/inherited
+
+Abstract method
+- A method without implementation
+- A class holds this method has to be declared abstract
+- Being an undefined method, kept the class incomplete
+	- Such classes cannot be instantiated unless the method is completely defined.
+- Purpose is to achieve polymorphism
+
+Interface:
+- Its an 100% Abstract container in Java
+- All the methods are by default public abstract
+- All the fields are by default public static final
+- A class can implement multiple interfaces
+- An interface can extend multiple interfaces
+
+interface Holder {
+	void viewQuote();
+}
+interface Broker extends Holder {
+	void getQuote();
+}
+interface Exchange extends Broker {
+	void setQuote();
+}
+
+class Stock implements Exchange {
+	public void getQuote() {
+		Sysout("Get quote");
+	}
+	public void setQuote() {
+		Sysout("Set quote");
+	}
+	public void viewQuote() {
+		Sysout("View quote");
+	}
+}
+
+Stock tata = new Stock();
+
+Holder h = tata;
+h.viewQuote();
+
+Broker b = tata;
+b.viewQuote();
+b.getQuote();
+
+Exchange x = tata;
+x.viewQuote();
+x.getQuote();
+x.setQuote();
+-----------------------------------------------------------------
+
+class CurrencyConverter {
+	public void double convert(source_currency, target_currency, amount) {
+		// Logic to convert currency in max 2 lines
+	}
+}
+
+USD -> INR
+INR -> USD
+UKP
+UKP -> INR
+INR -> UKP
+UKP -> USD
+USD -> UKP
+
+Base Currency: Dollar
+
+Book						Member
+- title						- name
+- member					- book
+- status()					- status()
+- issueBook(Member m)
+- returnBook(Member m)
+-----------------------------------------------------------------
+
+Design Patterns
+- Solution to recurring problem.
+	- Solving problem without disturbing existing implementation.
+- A pattern to produce objects on demand
+	- Factory Method
+- A pattern to product an object and return reference of the same every time
+	- Singleton
+-----------------------------------------------------------------
+Assignment:
+- Create a Product class
+	Product
+	- name
+	- price
+	- Constructors
+	- Getters and Setters
+- Create a ShoppingCart class
+	ShoppingCart
+	- product[5]		// array of Product
+	- total
+	- addToCart(Product p)
+	- checkout() 
+
+* Maximum 5 products can be added to cart
+* addToCart method should print error for adding more than 5 products
+* Price of the products should be added to cart total
+* Checkout should print all product details and cart total
+
+2)
+In the Accounts application we have to print statement of last 10 transactions
+Which includes
+	- transaction type
+	- transaction amount
+	- balance
+
+Introduce a new method in Accounts class named "statement()" to print the same
+
+
+A Java program can have multiple classes and interfaces.
+But there can be only 1 public class or interface
+Public type must be defined in its own file
+Java program name and public class name must be same.
+
+Outer class can only be
+- public
+- default
+- final
+- abstract
+
+Inner class can be
+- public/private/protected/default
+- final/static/abstract
+
+Anonymous inner classes can be defined as an implementation on the fly
+They don't have names hence their constructors are nameless
+-----------------------------------------------------------
+
+"Every object is an Object in Java."
+
+- Object is the root class of the Java API
+- Every Java class directly or indirectly is a child of Object class
+- Important methods of Object class
+	- toString()
+		- Every Java object must have a string representation
+	- equals()
+		- Every Java object must be comparable
+	- clone()
+		- Java objects can be cloned
+		- By default it implements Shallow Copying algorithm
+	- getClass()
+		- To get class information of a Java object
+		- Handy in the reflection API
+	- hashCode()
+		- Every Java object has a unique number in JVM
+	- wait(), notify(), notifyAll()
+		- Method used in multi-threaded scenerios
+-----------------------------------------------------------
+Marker Interface:
+- Interfaces without any field or methods
+- They are blank interfaces
+	- Introduce to force conditional agreements
+- Example
+	- Cloneable
+	- Serializable
+	- Remote
+-----------------------------------------------------------
+
+Packages:
+- Java term for folders
+- Way to organise multiple java class files in to folders
+- Mainly introduced to avoid naming conflicts among class names
+- Solves the problem of ambiguity
+
+Naming convention of packages
+- Packages follows reverse order of URL as naming convention
+
+mail.google.com
+map.google.com
+ads.google.com
+
+// In case of the order of URL
+mail
+	- google
+		- com
+map
+	- google
+		- com
+
+// In case of the reverse order of URL
+com
+	- google
+		- mail
+			- *.class
+		- map
+			- *.class
+		- ads
+			- *.class
+
+com.ibm.bank
+com.ibm.emp
+com.ibm.stock
+com.ibm.xe
+com.ibm.lib
+
+
+Scope / Access Modifiers
+									 (package)
+MyClass				private       default       protected       public
+Same Package
+- Child class			   NO           YES            YES                 YES
+- Other class			   NO           YES            YES                 YES
+Other Package
+- Child class			   NO           NO           YES                  YES
+- Other class			   NO           NO           NO                 YES
+
+-----------------------------------------------------------
+jar files
+Java Archives
+- It encapsulates and zips whole Java application .class files to serve as library.
+war files
+Web Archive
+- Web application
+ear files
+Enterprise Archives
+- Enterprise applications
+
+-----------------------------------------------------------
+// Single line comment
+
+/*
+	Block comment
+*/
+
+/**
+	JavaDoc comment
+*/
+
+-----------------------------------------------------------
+Reflection API
+- One of the most powerful APIs in Java
+- It can load class manually into JVM
+- It can provide detailed summary of the object
+	- Like list of constructors, methods and fields
+- It can even dynamically instantiate objects and invoke methods
+- It is very handy API for automation of tasks
+- Eclipse uses this API for auto-completion support
+
+-----------------------------------------------------------
+SAM: Single Abstract Method
+- We used to call interfaces with Single abstract method as SAM interface.
+- Functional Interface introduced in Java 8
+	- An interface with Single Abstract Method
+	- Need not write the whole class to implement SAM
+	- Hence, Lambda expression is introduced in Java 8
+	- To mark them @FunctionInterface annotation is introduced
+
+- From Java Spider interfaces can now have fully defined methods
+	- "default" is the keyword to defined methods inside an interface
+	- These methods can be called with the reference of objects of
+ 	implementing class
+	- It can also have fully defined static methods
+	- Can be called directly with interface reference
+
+Varargs:
+- Introduced to reduce the pain of passing an array to method arguments
+- It can only be the last argument of a method
+- It is represented with "..." 3 dots
+
+Generics:
+- Introduced to keep classes generic but objects of a specific type
+- If no type specified then by default it consider it of Object type
+
+Types of Functional Interfaces:
+- Consumer
+	- Consumes a value
+	- Doesn't return anything
+- Supplier
+	- Supply a value
+	- Doesn't take anything
+- Predicate & BiPredicate
+	- Returns boolean 
+	- Takes an argument
+	- BiPredicate takes 2 arguments
+- Function & BiFunction
+	- Returns a value
+	- Takes an argument
+	- BiFunction takes 2 arguments
+
+---------------------------------------------------------
+Exception Handling
+- Exceptions are broken rules.
+- Every system is govern by set of rules.
+- Exception handling gives control in the hands of developer to handle the problem
+	or react to illegal activity.
+
+Object
+ - Throwable
+	- Error
+	- Exception
+		- SQLException
+		- IOException
+		- InterruptedException
+		- ...
+		- RuntimeException
+			- NullPointerException
+			- ArithmeticException
+			- ArrayIndexOutOfBoundsException
+			- ...
+
+There are 2 types of exceptions
+- Checked
+	- Handling is mandatory otherwise it gives compile time error
+	- Exception and all its direct child classes falls under this category
+- Unchecked
+	- Handling is optional, if exception occurs and not handled will lead to exit
+	- RuntimeException and all its child classes falls under this category
+
+try, catch, finally, throw, throws
+
+try {
+	[statements that may
+	throw exception(s)]
+} catch(ExceptionType ref) {
+	[Handling code]
+} catch(ExceptionType ref) {
+	[Handling code]
+} finally {	// Executes no matter what
+	[Clean-up operation]
+} 
+
+int sum (int a, int b) {
+	return a + b;
+}
+
+void withdraw(double amount) throws BalanceException {
+	// on some condition check
+	throw new BalanceException();
+}
+ 
+Important methods of Exception class
+- printStackTrace()
+	- Handy for developers to trouble shoot problem
+- toString()
+	- For logging to audit application behaviour
+- getMessage()
+	- For end users
+
+---------------------------------------------------------
+Multi-Threading...
+- Threads are used to perform parallel operations
+- Java program are by default multi-threaded
+	- Java application runs inside a thread called "main"
+- We can create our own threads apart from main thread
+	- It improves performance by running tasks simultaneously
+- An application can be splited into small tasks
+	- Also known as light-weight process
+	- Java calls them Thread
+
+Java API to work with threads
+- Runnable (I)
+	- run()
+	- Any piece to code user wants to execute as a separate thread
+	  shall be implemented as run() of Runnable interface
+
+- Thread (C)
+	- A Thread class object represents a thread of execution
+
+There are 2 ways of creating threads in Java
+	1- By implementing Runnable interface
+		- Multiple threads executes single piece of code
+		- Multiple threads shares common state
+	2- By extending Thread class
+		- Thread per state
+
+start() of Thread
+- Is responsible to create a separate thread of execution
+- Calling respective run() method inside the newly created thread
+
+Daemon Thread
+- Thread that runs in the background
+- Stops automatically once all running threads stops
+
+Thread Safety
+- Achieved using "Synchronized" methods
+- Doesn't allow multiple threads to work together
+- Lock the object once a synchronized method is called
+- Other threads has to wait until thread lock is released
+
+---------------------------------------------------------
+File I/O
+- Package is java.io
+- Read/Write to/from files on file system
+- In Java programs do not have direct access to native file-system
+	- That is why in almost 30 years of Java language no one ever wrote a virus in Java
+- JVM put his feet in between application and file system
+	- To make sure no illegal activities are happening
+	- Every communication between files and application goes through the JVM
+- The connection to the file is called a stream
+- There are 2 different types of streams
+	- Character
+		- Deal with character data i.e. ASCII and UNICODE
+		- Data type of this stream is "char"
+		- Root classes of character stream
+			- Reader
+			- Writer
+				- File
+				- Buffered
+	- Binary
+		- Deals with binary data i.e. Zeroes and Ones and ASCII
+		- Data type of this stream is "byte"
+		- Root classes of binary stream
+			- InputStream
+			- OutputStream
+				- File
+				- Buffered
+				- Object
+				- Data
+
+Buffers:
+- Temporary memory area in RAM
+- Used for improving reading and writing performances
+	- As reading/writing to memory is faster than HDD
+- Also allows to read chunk of data at once unlike reading a byte/character from file
+
+Serialization:
+- Is a process to write state of any Java object to the underlying stream
+	- ObjectOutputStream is responsible for serialising an object
+- In this the state of Java object goes out of the boundaries of JVM
+	- There's a probability of data loss in sending object over any stream
+- Object must implement Serializable interface for this process
+	- It is a marker interface
+	- A marker interface doesn't have any method or fields, its blank
+- It is used just to digitally sign the object valid for serialisation
+- Fields marked with transient keyword does not serialise 
+
+---------------------------------------------------------
+Collection API
+- Shortfalls of an array is, it is fixed in size
+	- Solution to this problem is Data Structures
+	- Popular data structures are LinkedList, Stack, Queue, Binary Tree
+- It is introduced to overcome the shortfalls of arrays
+- It provides classes which are implementation of various well known data structures 
+- It is said to be an optimised implementation of data structures 
+- It is based on generics, hence entertains only objects
+- It is called collection API because the root interface name is Collection
+
+Hierarchy of Collection API
+
+Collection(I)
+- List(I)
+- Set(I)
+	- SortedSet(I)
+- Queue(I)
+- Dequeue(I)
+
+Collection(I):
+- It represents collection of objects
+- One object per elements/node
+
+List(I):
+- Inherits behaviour of Collection(I)
+- It guarantees sequence
+	- Elements can be fetched in the same order they are added
+	- Hence elements can be fetched by their subscript/index
+- List allows duplicate elements
+	- Multiple null elements are possible
+- Implementing classes: ArrayList, LinkedList, Vector(S)....
+
+Set(I):
+- Inherits behaviour of Collection(I)
+- It doesn't guarantee sequence
+	- Elements cannot be accessed using subscript/index
+- It doesn't allow duplicate elements
+- Implementing classes: HashSet, LinkedHashSet
+
+SortedSet(I):
+- Inherits behaviours of Set(I)
+- Elements are maintained in order
+- Implementing class: TreeSet
+- To sort custom or user defined objects, logic can be provided in either of following ways
+	- By making object Comparable
+		- Make class implement java.lang.Comparable(I)
+	- By providing explicit Comparator
+		- Separate class implementing java.util.Comparator(I)
+
+Traversing over collections:
+- For loop with index works well with List type of collection
+- Iterator(I) is helpful in traversing over any type of collection
+	- ListIterator(I) designed for List type of collection, traverse in bi-direction
+- For-each loop is the most comfortable option to traverse on collections
+
+There's another type of collection that holds 2 objects
+Map(I)
+- It holds 2 objects per element/node
+- It represents key/value pair
+- It doesn't allow duplicate keys
+- Implementing classes: HashMap, HashTable(S), ResourceBundle, Properties, LinkedH...
+
+SortedMap(I)
+- Inherits behaviour of Map(I)
+- Keys are maintained in order
+- Implementing class: TreeMap
+- Require sorting logic for custom objects for comparison 
+
+Comparable and Comparator
+- Both does the job of comparing 2 Java objects
+- Class that implements Comparable can only provide one implementation of algorithm
+- Comparator provides flexibility of creating multiple comparison logic
+- Both the interfaces are functional interfaces hence can be implemented in lambda way
+- Comparator is more handy as it doesn't force to manipulate existing class
+
+LinkedHashSet
+ConcurrentHashMap
+
+
+i18n: Internationalisation / Localisation
+- Uses Locale to identity language
+- ResourceBundle class is used to load respective properties file based on locale
+- Some locales are predefined, custom locales can be created.
+
+-------------------------------------------------------------
+Streams API
+- It allows to process data in a declarative way
+- Enhances the usability of Java collections
+	- Making it easy to iterate and perform tasks against elements in collections
+- Supports sequential and parallel operations
+- Not a data structure
+- Designed for Lambdas
+- Categories of Stream operations
+	- Intermediate operations
+	- Terminal operations
+- A stream pipeline consist of zero or more intermediate operations and a terminal 
+- Stream is closed once terminal operation is performed
+- Different type of stream operations are
+	- Filter
+	- Map
+	- Reduce
+	- Search
+	- Sort
+
+-------------------------------------------------------------
+JDBC: Java Database Connectivity
+- It is Java API to communicate with databases
+- It uses different types of drivers to communicate with database
+- JRE provides DriverManager service to handle drivers
+
+Steps for JDBC
+1- Identify appropriate database and driver
+	- We choose MySQL and Type IV driver
+2- Register driver with the Driver Manager
+3- Request Connection from Driver Manager
+4- Create Statement
+5- Execute and get result
+
+Types of Statements
+1- Statement(I)
+	- Used to perform fixed or hard-coded SQL queries
+	- Compiled every time before execution
+2- PreparedStatement(I)
+	- Used to perform SQL queries with dynamic values
+	- Represents Precompiled SQL queries
+3- CallableStatement(I)
+	- Used to invoke database stored procedures and functions
+
+Select SQL queries returned results are represented as ResultSet(I) objects
+- Result set is a record pointer, points before the first record fetched from database
+- It stores Select query result in a logical table in memory for traversing
+
+
+
+Testing: JUnit
+- Unit testing is a way of testing unit of work in the application
+- Mainly done by the developers
+- A unit is the smallest testable part of an application
+	- You can think of a method as a unit
+
+TDD: Test Driven Development
+- A style of programming where test cases are already written
+- Code is developed according to the test cases provided
+- It can be automated with the help help of tools such as Maven
+- It a development paradigm
+
+JUnit annotations:
+Life-Cycle annotations
+- @BeforeAll
+	- Executes once before all test cases
+	- Must be a static method
+	- Mainly used for initialising object or open db connection etc.
+- @AfterAll
+	- Executes once after all test cases
+	- Must be a static method
+	- Mainly used for clean-up operations like closing files and db connections
+- @BeforeEach
+	- Executes once before each test case
+	- Mainly used for initialising values or setting initial object state
+- @AfterEach
+	- Executes once after each test case
+
+- @Test
+	- Must be marked on every test case
+- @Disabled
+	- To avoid a test case 
+- @RunWith
+
+---------------------------------------------------------------
+Maven:
+* Its a build tool
+* Project management tool
+- Because it provides solutions for uniformity of versions and dependencies
+
+Maven has POM (Project Object Model)
+- Represented with pom.xml file
+- It holds project information like package and version
+- It holds dependencies of this project to be added/downloaded
+
+Maven Dependency has
+- groupId: represents package naming 
+- artifactId: represents project or library name
+- version: represents version of library of application
+
+Maven Repositories
+Maven has two types of repositories: local and remote. Maven usually interacts with your local repository, but when a declared dependency is not present in your local repository Maven searches all the remote repositories it has access to in an attempt to find what's missing.
+
+Project structure
+src
+ - main		// folder where we write java code
+	- java		// folder where we write java code
+	- resource		// resources like properties files
+ - test
+	- java		// folder where we write java test case in JUnit
+	- resource		// resources like properties files
+
+Maven Build Phases/Goals
+Validate
+- Validates that the project is correct and all dependencies are downloaded.
+Compile
+- Compiles the source code of the project
+Test
+- Runs the test cases against the compiled source code
+Package
+- Packs the compiled code in its distributable format, such as jar
+Install
+- Install the package into the local repository, in case of creating API library
+Deploy
+- Copies the final package to the remote repository for sharing with Ops
+Clean
+- Cleans all generated jars and refreshes dependencies
+
+* Every build phase performs all the above phases first.
+* Except clean build phase.
+
+--------------------------------------------------------
+* Git is a version control tool
+* Centralised repository system
+* Versions are identified by commits
+	- Each commit has a unique message
+* It gives us flexibility to switch between versions smoothly
+* Supports collaboration so that multiple users can work on single repository
+* Supports branches for parallel development of different versions
+
+Git Commands
+To check git version
+>git --version
+
+To check git configuration details
+>git config --list
+
+To initialise current directory as local git repository
+>git init
+
+To check the status of files in staging area 
+>git status
+
+To add a file into git staging area
+>git add filename
+
+To remove all files from staging area
+>git reset
+
+To add all files or changes into staging area
+>git add -A
+
+To commit changes of staging area into local repository
+>git commit -m "commit message"
+
+To check commit status
+>git log
+>git log --stat
+
+To change commit message
+>git commit --amend -m "New commit message"
+
+To link local repository with remote on GitHub
+>git remote add origin https://github.com/username/repo.git
+
+To check remote repository details
+>git remote
+>git remote -v
+
+To push local committed changes to remote repository on Github
+>git push -u origin master
+
+To clone git remote repository 
+>git clone https://github.com/username/repo.git
+
+To pull git remote repository to merge changes into local
+>git pull origin master
+
+To check branches in local git repository
+>git branch
+
+To create a separate branch
+>git branch branch_name
+
+To switch between branches
+>git checkout branch_name
+
+To merge branches into master branch
+>git merge branch_name
+
+To delete branch after merging into master
+>git branch -d branch_name
+
+
+
+Mongo DB:
+
+Sample JSON document
+{
+	name:"Zubair",
+	age:41,
+	gender:"Male",
+	address:{
+		street:"Main Street",
+		city:"Thane",
+		zip:123123
+	},
+	hobbies:["Sleeping","Music","Cartoons"],
+	relations:[
+		{name:"Java", relation:"Brother"},
+		{name:"MJ"m relation:"Fan"}
+	]
+}
+
+Mongo DB:
+- Its an open-source document oriented database
+- Its a leading NoSQL(Not Only SQL) database
+- It is written in C++
+- Its a cross-platform database
+- It works on the concept of document and collection
+Database:
+- Is a container for collections
+- There's a separate file created for each database in file system
+- MongoDB can hold multiple databases
+Collection:
+- Its a group of MongoDB documents
+- A collection can be interpreted as a table in RDBMS
+- Document within a collection can have different fields
+Document:
+- A document is a set of key-value pairs
+- It need not have the same set of fields or structure within a collection
+- It may hold different types of data
+
+MongoDB Commands
+- Command to start mongo
+>mongo
+
+- To show all databases
+>show dbs
+
+- To create and use database
+>use db_name
+
+- To check current database
+>db
+
+- To show collections within current database
+>show collections
+
+- To create a collection
+> db.createCollect('person')
+
+- To insert a document to collection
+> db.person.insert({name:"Polo",age:21})
+
+- To insert multiple documents at once
+> db.person.insert([ {name:"Jack",age:30}, 	{name:"Mona",age:23,gender:"Female"}])
+
+- To update a document inside collection
+> db.person.update({name:"Polo"},{name:"Polo",age:21,gender:"Male"})
+
+- To update only a field in a document
+> db.person.update({name:"Jack"}, {$set:{gender:"Male"}})
+
+- To update a document if not found then insert
+> db.person.update({name:"Kim"},
+... {name:"Kim",age:19,gender:"Female",city:"Goa"}, {upsert:true})
+
+- To remove a field from a document
+> db.person.update({name:"Kim"}, {$unset:{city:1}})
+
+- To remove a document from collection
+> db.person.remove({name:"Jack"})
+
+- To count documents within collection
+> db.person.find().count()
+
+- To display limited records
+> db.person.find().limit(2)
+
+- To find document based on condition
+> db.person.find({age:{$gt:20}})
+
+> db.person.find({$or:[{name:"Polo"},{name:"Kim"}]})
+
+- To sort documents based on a field
+- Ascending
+> db.person.find().sort({name:1})
+- Descending
+> db.person.find().sort({name:-1})
+
+To rename a collection
+>db.customers.renameCollection("NewName");
+
+To remove a collection
+>db.mycollection.drop()
+
+To drop database
+>use mydb
+>db.dropDatabase()
+
+
+
+JPA: Java Persistence API
+
+ORM: Object Relational Mapping
+
+Employee				emp
+- empNo				- emp_no
+- empName			- ename
+- salary				- salary
+
+- It is a paradigm
+- Emphasis on mapping Java Object with Database Tables
+- Shall automatically take care of generating tables
+- Create tables relationships based on object associations
+- Provide simple API to perform CRUD operations
+- Make database interaction smooth and easy
+	- In short it should make JDBC much more easier to implement
+- Few popular ORMs in the market are...
+	- Hibernate
+	- TopLink
+	- EclipseLink
+	- JDO
+	- iBatis
+
+JPA: 
+- It is a standard for ORMs
+- All ORMs must support standard JPA specification apart from native API
+- Support standard configuration file apart from their standard config files
+- This makes migration from 1 ORM to another much easier and tolerable
+	- It would save efforts of changing the code and configuration
+
+META-INF/persistence.xml
+- Standard configuration file for JPA
+- Persistence unit name
+	- Unique name for each persistence provider or database
+- Persistence provide
+	- Underlying ORM framework
+- Database connection properties
+	- To specify database connection URL, username, password, driver etc.
+- Hibernate Dialect
+	- Hibernate can talk to handful of databases
+	- Each database may be using different syntax and semantics
+	- Hibernate uses dialect to interact with each database
+- Hibernate Show SQL
+	- As hibernate generates queries for us
+	- We can ask hibernate to show generated queries
+- Hibernate HBM-DDL auto
+	- Data Definition Language : For creating database table/sequences etc.
+	- There are 2 main strategies [create/update]
+	- In create strategy it alway drops all existing tables and create new tables every time code run
+	- In update strategy if table exist it works with that, otherwise creates a new table
+
+Entity: A class associated/mapped with a database table.
+An entity represents a record in a database table
+
+Common JPA Annotations 
+@Entity	
+	- To make a class an entity or to map object with table
+@Table	
+	- To specify the table name if different from entity name
+	- Otherwise it consider class name as table name
+@Id
+	- To specify the field will represent primary key column in database table
+@Column
+	- To specify different column name in the table for this field
+	- To specify size of column in table
+@GeneratedValue
+	- To auto generate the value for specified column
+	- Mainly for Id columns
+	- There are several strategies to generate values
+		- Such as [Sequence, Table, Identity, Auto]
+@ManyToOne
+	- To specify this entity is a child entity of specified parent
+@JoinColumn
+	- To specify the foreign key column of the parent entity
+@OneToMany
+	- To specify this entity is the parent entity
+	- In this annotation fetch type is by default lazy
+		- That means when parent entity record is fetched it doesn't pull child entity records
+	- Fetch type can be set as eager
+		- That means when parent entity record is fetched is pulls child records too
+	- Cascade effects can also be set using cascade property of this annotation
+		- To specify the cascading effects like
+			- When parent entity is persisted all its associated child objects should also be saved
+			- When parent entity is modified all its associated child records should also be updated
+			- When parent entity is deleted whether child records should be removed or made orphans
+
+Mobile
+- code
+- brand
+- model
+- price
+
+Entity
+Dao
+TestDao
+
+* Perform all CRUD operations
+
+
+Spring Framework
+
+Application Layers
+
+- Presentation Layer
+	- Servlet/JSP
+	- Angular
+	- React
+	- Mobile Apps
+	- ATM
+	- GUI Clients
+	- Spring MVC
+
+- Business Logic (BL) Layer
+	- EJB (Enterprise Java Beans)
+	- Spring Framework
+		- IoC
+		- AOP
+		- Spring Boot
+
+- Persistence Layer
+	- JDBC
+	- Hibernate
+	- JPA
+	- MainFrames
+	- Spring Data
+
+* Spring framework is designed for End-to-End application development
+* Spring framework provides seamless integration with many technologies/API
+* Designed by Rod Johnson
+
+Dependency Injection (DI) is the core of Spring framework
+Spring framework calls is IoC (Inversion of Control)
+
+// Plumbing
+1. AccountDao dao = new AccountDao();
+2. AccountService service = new AccountService(dao);
+// Logic
+3. service.transfer(1, 2, 100);
+
+Why use Spring framework?
+1- It takes care of plumbing
+	- Injecting the dependencies and providing object whenever needed
+2- It lets developers focus only on business logic
+
+Configuration files
+- Used to inform Spring framework about the classes and dependency information
+- Spring supports 3 different types of configurations
+	- XML based
+	- Annotation based
+	- Java based
+
+ApplicationContext(I)
+- ClassPathXmlApplicationContext (C)
+- FileSystemXmlApplicationContext (C)
+
+ApplicationContext(I)
+- It represents Spring IoC container
+- It is responsible for Loading beans from XML file or Annotated classes
+- It is responsible for injecting dependencies
+- It returns objects when requested
+
+Types of Dependency Injections:
+- Constructor injection
+- Setter injection
+
+
+
+
+Default instantiation behaviour of Spring Application Context is Singleton
+
+Scopes in Spring
+- Singleton (Default)
+- Prototype
+	- Similar to Factory method
+	- But requires different constructor for multiple objects
+
+Annotation Based configuration treats Spring beans as components
+- Hence beans are annotated with @Component annotation
+- @Component annotation has few stereotype children
+	- @Service
+	- @Repository
+	- @Controller
+	- @Configuration
+- They all performs the same task but, different names for different purpose
+- It improves the readability of the code
+
+@Autowired
+- It is used to automatically inject the dependency in Java class
+	* Without a need of constructor or setter
+- By default it follows dependency by type for injection
+- In case of achieving by name dependency
+	- @Qualifier annotation is used along with @Autowired 
+
+ApplicationContext instantiation behaviour
+- Eager instantiation (default)
+	- Instantiate all the beans at the time of creating container
+- Lazy instantiation
+	- Instantiate bean only when it is needed
+
+Design Patterns: Common solution to recurring problem.
+- Factory method: Create and returns new object per request
+	- Spring calls it prototype
+- Singleton: Creates an object, returns reference of the same to all requests
+	- Default pattern of Spring
+
+Configuration File
+- An xml document
+- Name of the file could be anything
+- Classes are listed in this file as beans
+- All the dependencies of beans specified here
+- IoC container reads this file for configuration
+
+

@@ -1,0 +1,19 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="['/add']" routerLinkActive="active">Add Flight</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="['/list']" routerLinkActive="active">List Flight</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="['/search']" routerLinkActive="active">Search Flight by ID</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="['/carrier']" routerLinkActive="active">Search Flight by Carrier</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="['/route']" routerLinkActive="active">Search Flight by Route</a>
+  </li>
+</ul>
+
+<router-outlet></router-outlet>

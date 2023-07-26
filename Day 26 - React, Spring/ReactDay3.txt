@@ -1,0 +1,19 @@
+Talking to REST API using fetch() method:
+
+The most accessible way to fetch data with React is using the Fetch API.
+
+The Fetch API is a tool that's built into most modern browsers on the window object (window.fetch) and enables us to make HTTP requests very easily using JavaScript promises.
+
+To make a simple GET request with fetch we just need to include the URL endpoint to which we want to make our request. We want to make this request once our React component has mounted.
+
+JavaScript Fetch API provides an interface for accessing and manipulating HTTP requests and responses. fetch() returns a Promise that resolves with a Response object, which is fulfilled once the response is available.
+
+The Response object we mention above represents the entire HTTP response, it does not directly contain the response body. To get the actual JSON body of the response, we use response.json() method.
+
+We can also access metadata such as headers, status, statusText, type, url from the Response object.
+
+The response Promise does not reject on HTTP errors (for example: 404, 500). It only rejects when encountering a network error. So we must use then() to check for HTTP errors with response.ok status and/or response.status properties.
+
+--------------------------------------
+A preventDefault() is called on the event when submitting a form to avoid browser refresh/reload.
+As that could reset the form state.

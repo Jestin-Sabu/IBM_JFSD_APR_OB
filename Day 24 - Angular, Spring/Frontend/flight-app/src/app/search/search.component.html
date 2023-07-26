@@ -1,0 +1,58 @@
+<div class="d-flex mt-5 justify-content-center align-items-center">
+    <div class="row col-md-6">
+      <div class="card">
+        <div class="card-header mt-2">
+          <h5>Search Flight By Code</h5>
+        </div>
+        <div class="card-body">
+          <form class="form-inline" (ngSubmit)="search()" #ngFrm="ngForm">
+            <label for="code">Code</label>
+            <input
+              class="form-control"
+              type="text"
+              name="code"
+              [(ngModel)]="flight.code"
+              placeholder="Flight Code"
+              pattern="[1-9][0-9]{2,}"
+              #code="ngModel"
+              required
+            />
+            <div
+              *ngIf="code.dirty && code.invalid"
+              class="alert alert-danger mt-2 mb-1 p-2"
+            >
+              Invalid Flight Code
+            </div>
+            <button
+              class="form-control btn btn-primary mb-2 mt-2"
+              type="submit"
+              [disabled]="!ngFrm.valid"
+            >
+              Search Flight
+            </button>
+          </form>
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <th>Code</th>
+                <td>{{ flag ? flight.code : "" }}</td>
+              </tr>
+              <tr>
+                <th>Carrier</th>
+                <td>{{ flight.carrier }}</td>
+              </tr>
+              <tr>
+                <th>Source</th>
+                <td>{{ flight.source }}</td>
+              </tr>
+              <tr>
+                <th>Destination</th>
+                <td>{{ flight.destination }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  

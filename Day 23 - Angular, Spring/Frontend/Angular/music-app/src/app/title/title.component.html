@@ -1,0 +1,51 @@
+<div class="d-flex mt-5 justify-content-center align-items-center">
+    <div class="row col-md-3">
+      <div class="card">
+        <div class="card-header">
+          <h5>Search Album</h5>
+        </div>
+        <div class="card-body">
+          <form class="form-inline" (ngSubmit)="findAlbumByTitle()" #ngFrm="ngForm">
+            <label for="aid">Album Title</label>
+            <input
+                class="form-control"
+                type="text"
+                name="aid"
+                [(ngModel)]="album.title"
+                placeholder="Album Title"
+                pattern="[A-Z][a-z]{3,}"
+                #aid="ngModel"
+                required
+              />
+            <div *ngIf="aid.dirty && aid.invalid" class="alert alert-danger">
+              Invalid Album ID
+            </div>
+            <button class="form-control btn btn-primary mb-2 mt-2" type="submit" [disabled]="!ngFrm.valid">
+              Search Album
+            </button>
+          </form>
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <th>Album ID</th>
+                <td>{{ flag?album.id:"" }}</td>
+              </tr>
+              <tr>
+                <th>Title</th>
+                <td>{{ flag?album.title: "" }}</td>
+              </tr>
+              <tr>
+                <th>Artist</th>
+                <td>{{ album.artist }}</td>
+              </tr>
+              <tr>
+                <th>Genre</th>
+                <td>{{ album.genre }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  

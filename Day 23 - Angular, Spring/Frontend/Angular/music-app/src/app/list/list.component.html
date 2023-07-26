@@ -1,0 +1,31 @@
+<div class="d-flex mt-5 justify-content-center align-items-center">
+  <div class="row col-md-6">
+      <div class="card">
+          <div class="card-header">
+              <h5>List of Album</h5>
+          </div>
+          <div class="card-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Album ID</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Artist</th>
+                  <th scope="col">Genre</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let a of albums; let i = index">
+                  <th scope="row">{{ a.id }}</th>
+                  <td>{{ a.title }}</td>
+                  <td>{{ a.artist }}</td>
+                  <td>{{ a.genre }}</td>
+                  <td><button (click)="delete(i)" class="btn btn-primary btn-sm">Delete</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      </div>
+  </div>
+</div>

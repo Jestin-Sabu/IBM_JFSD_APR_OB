@@ -1,0 +1,64 @@
+CI
+- In a Continuous Integration Environment source code is maintained in a central location where an application monitors the repository and springs into action when it notices changes (commits) to the code.
+- CI System must be able to be built and tested automatically.
+- After every commit or as per the schedule the source code auto build can be triggered
+- If the test results shows that there is a bug then developer has to only check the last commit made to the source code
+- Increases the frequency of the new software release
+- Continuous feedback is provided to the concern teams
+- Aims to eliminate code integration issues
+- Minimise project with notification of defects and code quality issues
+- Reduces cost of quality
+- Automation of build and testing of an application.
+
+Jenkins:
+- Its an open source software that allows Continuous Integration
+- It is designed and developed using Java
+- Jenkins is highly configurable, and there are numerous plugins available that provide access to a range of tools.
+- It automate a number of day-to-day tasks such as checking out the sources from source control, building, code analysis, and different levels of testing and deployment.
+
+Creating Maven Project in Jenkins:
+#1- Select New item from dashboard
+#2- Specify name and Select Maven Project then click Save
+Configuring Project
+#1- To pull project from Github 
+	- Check GitHub project checkbox
+	- Specify Project url
+		- Ex: https://github.com/user/reponame
+#2- Under Source Code Management
+	- Select Git radio button
+	- Specify Repository URL
+	* Credentials are optional for pulling Github project
+#3- To build Maven project 
+	- Under Build option of Build Triggers
+	- Specify path of pom.xml file under Room POM 
+	- Specify Maven goal such as package or test under Goals and options
+* Rest of the options remains in default settings
+#4- Click save
+#5- Select Build Project option to build maven project 
+#6- Click Build number and Select Console to see execution.
+
+Build and Publish Docker Image from Maven Project in Jenkins:
+#1- Select New item from dashboard
+#2- Specify name and Select Maven Project then click Save
+Configuring Project
+#1- To pull project from Github 
+	- Check GitHub project checkbox
+	- Specify Project url
+		- Ex: https://github.com/user/reponame
+#2- Under Source Code Management
+	- Select Git radio button
+	- Specify Repository URL
+	* Credentials are optional for pulling Github project
+#3- To build Maven project 
+	- Under Build option of Build Triggers
+	- Specify path of pom.xml file under Room POM 
+	- Specify Maven goal such as package or test under Goals and options
+#4- Under Post Steps 
+	- Select Docker Build and Publish from drop down
+	- Specify Repository Name Eg: user/reponame
+	- Specify Tag name for the Docker image
+	- Under Advanced specify Dockerfile Path Eg: projName/Dockerfile
+* Rest of the options remains in default settings
+#5- Click save
+#6- Select Build Project option to build maven project 
+#7- Click Build number and Select Console to see execution.

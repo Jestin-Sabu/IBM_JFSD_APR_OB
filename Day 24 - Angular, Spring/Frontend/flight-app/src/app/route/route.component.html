@@ -1,0 +1,70 @@
+<div class="d-flex mt-5 justify-content-center align-items-center">
+    <div class="row col-md-4">
+      <div class="card">
+        <div class="card-header">
+          <h5>Search Flight</h5>
+        </div>
+        <div class="card-body">
+          <form class="form-inline" (ngSubmit)="search()" #ngFrm="ngForm">
+            <div class="form-group mt-1 mb-1">
+                <label for="source">Source</label>
+                <select
+                  class="form-control"
+                  name="source"
+                  [(ngModel)]="source"
+                  required
+                >
+                  <option *ngFor="let c of cities" [value]="c" [disabled]="destination == c">{{ c }}</option>
+                </select>
+              </div>
+              <div class="form-group mt-1 mb-1">
+                <label for="destination">Destination</label>
+                <select
+                  class="form-control"
+                  name="source"
+                  [(ngModel)]="destination"
+                  required
+                >
+                  <option *ngFor="let c of cities" [value]="c" [disabled]="source == c">{{ c }}</option>
+                </select>
+              </div>
+            <button
+              class="form-control btn btn-primary mb-2 mt-2"
+              type="submit"
+              [disabled]="!ngFrm.valid"
+            >
+              Search Flight
+            </button>
+          </form>
+          <div class="row col-md m-1">
+            <div class="card">
+              <div class="card-header">
+                <h5>List of Flight</h5>
+              </div>
+              <div class="card-body">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Code</th>
+                      <th scope="col">Carrier</th>
+                      <th scope="col">Source</th>
+                      <th scope="col">Destination</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let f of flights">
+                      <th scope="row">{{ f.code }}</th>
+                      <td>{{ f.carrier }}</td>
+                      <td>{{ f.source }}</td>
+                      <td>{{ f.destination }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

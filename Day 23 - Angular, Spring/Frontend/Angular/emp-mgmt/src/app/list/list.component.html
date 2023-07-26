@@ -1,0 +1,33 @@
+<div class="d-flex mt-5 justify-content-center align-items-center">
+    <div class="row col-md-6">
+        <div class="card">
+            <div class="card-header mt-2">
+                <h5>List of Employee</h5>
+            </div>
+            <div class="card-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Emp No</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Post</th>
+                    <th scope="col">Salary</th>
+                    <th scope="col">Hire Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let e of employees">
+                    <th scope="row">{{ e.empNo }}</th>
+                    <td>{{ e.empName }}</td>
+                    <td>{{ e.post }}</td>
+                    <td>{{ e.salary }}</td>
+                    <td>{{ e.hireDate }}</td>
+                    <td><button (click)="delete(e.empNo)" class="btn btn-primary btn-sm">Delete</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        </div>
+    </div>
+  </div>
+  

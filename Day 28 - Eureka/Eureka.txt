@@ -1,0 +1,12 @@
+Netflix Eureka Discovery - Spring Cloud
+While implementing microservices architecture, you’ll probably end up with too many services to manage their integration with each other. If you do not use something like automatic service discovery, each microservice will have several configurations about other modules to be able to call their endpoints.
+
+Service Discovery is one of the key feature of a microservice-based architecture. 
+Trying to hand-configure each client or some form of convention can be difficult to do and can be brittle. Eureka is the Netflix Service Discovery Server and Client.
+
+Eureka server is the service registry. Registry aware microservices will register themselves to this registry with their application names.
+By default, Eureka server is also a Eureka client and it can register itself to other Eureka server so that they can work as peers. 
+But, if you want to switch off the client behavior of your service registry and want a single registry instance, then you should disable register-with-eureka and fetch-registry configurations. Also, you need to set the serviceUrl to self-address:
+This is called the standalone mode. With this configuration, the service registry home page will not contain any Replicas
+
+Eureka client a sample application containing one registry REST endpoint. Compared to a simple Spring-Boot application, it only has additional dependencies and configurations which are necessary for service registration
